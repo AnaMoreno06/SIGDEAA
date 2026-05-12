@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Directora</title>
+    <link rel="stylesheet" th:href="@{/css/directora.css}">
+</head>
+
+<body>
+
+<!-- BARRA SUPERIOR -->
+<header class="topbar">
+    <div class="logo">SIGDEA</div>
+
+    <div class="top-icons">
+
+        <!-- NOTIFICACIONES -->
+        <button class="icon-btn" onclick="mostrarNotificacion()">
+            🔔
+        </button>
+
+        <!-- CERRAR SESIÓN -->
+        <a th:href="@{/logout}" class="icon-btn logout-btn">
+            ⏻
+        </a>
+
+    </div>
+</header>
+
+<!-- CONTENEDOR GENERAL -->
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <h2>NAVEGACIÓN</h2>
+
+        <ul>
+
+            <li>
+                <a th:href="@{/directora}">
+                    🏠 Inicio
+                </a>
+            </li>
+
+            <li>
+                <a th:href="@{/procesos}">
+                    🕸️ Gestión de procesos
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    📁 Gestión documental
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    📊 Indicadores
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    👥 Gestión de usuarios
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    📢 Publicaciones
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    📅 Calendario
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    📋 Reportes
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- CONTENIDO -->
+    <main class="content">
+
+        <!-- BIENVENIDA -->
+        <section class="welcome-card">
+
+            <h1>Bienvenida Directora</h1>
+
+            <p>
+                Gestiona la acreditación y documentación del programa.
+            </p>
+
+        </section>
+
+        <!-- TARJETAS -->
+        <section class="cards">
+
+            <div class="card">
+                <span>📁</span>
+                <h2>120</h2>
+                <p>Documentos</p>
+            </div>
+
+            <div class="card">
+                <span>👥</span>
+                <h2>20</h2>
+                <p>Usuarios</p>
+            </div>
+
+            <div class="card">
+                <span>📢</span>
+                <h2>8</h2>
+                <p>Publicaciones</p>
+            </div>
+
+            <div class="card">
+                <span>📈</span>
+                <h2>75%</h2>
+                <p>Avance</p>
+            </div>
+
+        </section>
+
+        <!-- PUBLICACIÓN -->
+        <section class="publication">
+
+            <h2>Nueva Publicación</h2>
+
+            <form>
+
+                <input type="text" placeholder="Título">
+
+                <textarea placeholder="Descripción"></textarea>
+
+                <input type="text" placeholder="URL de imagen">
+
+                <button type="submit">
+                    Publicar
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

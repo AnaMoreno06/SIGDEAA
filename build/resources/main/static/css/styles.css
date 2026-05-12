@@ -1,0 +1,66 @@
+body{
+    background:#f4f4f4;
+    font-family: Arial, sans-serif;
+}
+
+/* NAVBAR */
+.navbar-brand{
+    font-size:2rem;
+    font-weight:bold;
+}
+
+.nav-link{
+    font-size:1.1rem;
+    font-weight:500;
+}
+
+.nav-link:hover{
+    color:#ffd700 !important;
+}
+
+/* CARRUSEL */
+.carousel-item img{
+    height:80vh;
+    object-fit:cover;
+    filter:brightness(60%);
+}
+
+.carousel-caption{
+    bottom:30%;
+}
+
+.carousel-caption h1{
+    font-size:3rem;
+    font-weight:bold;
+}
+
+.carousel-caption p{
+    font-size:1.5rem;
+}
+
+/* CARDS */
+.card{
+    border:none;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h5{
+    margin-top:10px;
+    font-weight:bold;
+}
+
+/* PUBLICACIONES */
+.card-img-top{
+    height:220px;
+    object-fit:cover;
+}
+
+/* FOOTER */
+footer{
+    margin-top:40px;
+}

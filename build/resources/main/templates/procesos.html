@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Procesos</title>
+
+    <link rel="stylesheet" th:href="@{/css/procesos.css}">
+</head>
+
+<body>
+
+<!-- Barra superior -->
+<header class="topbar">
+    <div class="logo">SIGDEA</div>
+
+    <div class="icons">
+        🔔 ⏻
+    </div>
+</header>
+
+<div class="main-container">
+
+    <!-- Menú lateral -->
+    <aside class="sidebar">
+
+        <h2>NAVEGACIÓN</h2>
+
+        <ul>
+            <li>
+                <a th:href="@{/directora}">
+                    🏠 Inicio
+                </a>
+            </li>
+
+            <li class="active">
+                <a th:href="@{/procesos}">
+                    📂 Gestión de procesos
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    📊 Indicadores
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    👥 Gestión de usuarios
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    📢 Publicaciones
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    📅 Calendario
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    📋 Reportes
+                </a>
+            </li>
+        </ul>
+
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="content">
+
+        <div class="card">
+
+            <h1>Gestión de procesos estratégicos</h1>
+
+
+
+            <!-- Tabla -->
+            <table>
+
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Responsable</th>
+                    <th>Tipo</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <!-- Recorrido de procesos -->
+                <tr th:each="proceso, iterStat : ${listaProcesos}">
+
+                    <td th:text="${iterStat.count}"></td>
+
+                    <td th:text="${proceso.codigo}"></td>
+
+                    <td th:text="${proceso.nombre}"></td>
+
+                    <td th:text="${proceso.fecha}"></td>
+
+                    <td th:text="${proceso.responsable}"></td>
+
+                    <td th:text="${proceso.tipo}"></td>
+
+                    <td class="acciones">
+
+                        <!-- Ver -->
+                        <a th:href="@{'/proceso/' + ${proceso.id}}"
+                           class="btn-ver">
+                            👁️
+                        </a>
+
+                        <!-- Editar -->
+                        <a th:href="@{'/editarProceso/' + ${proceso.id}}"
+                           class="btn-editar">
+                            ✏️
+                        </a>
+
+                        <!-- Eliminar -->
+                        <a th:href="@{'/eliminarProceso/' + ${proceso.id}}"
+                           class="btn-eliminar">
+                            🗑️
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+            <!-- Botón agregar -->
+            <div class="acciones-superiores">
+
+                <a th:href="@{/nuevoProceso}" class="btn-agregar">
+                    ➕ Agregar nuevo proceso
+                </a>
+
+            </div>
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>
