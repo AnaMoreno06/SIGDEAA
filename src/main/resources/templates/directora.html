@@ -1,161 +1,372 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <title>Panel Directora</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SIGDEA</title>
+
     <link rel="stylesheet" th:href="@{/css/directora.css}">
+
 </head>
 
 <body>
 
-<!-- BARRA SUPERIOR -->
-<header class="topbar">
-    <div class="logo">SIGDEA</div>
+<!-- SIDEBAR -->
 
-    <div class="top-icons">
+<aside class="sidebar" id="sidebar">
 
-        <!-- NOTIFICACIONES -->
-        <button class="icon-btn" onclick="mostrarNotificacion()">
-            🔔
+    <div class="sidebar-top">
+
+        <button class="toggle-btn" onclick="toggleSidebar()">
+            ☰
         </button>
 
-        <!-- CERRAR SESIÓN -->
-        <a th:href="@{/logout}" class="icon-btn logout-btn">
-            ⏻
+        <div class="brand">
+
+            <h1>SIGDEA</h1>
+            <span>UFPS ADMINISTRATIVO</span>
+
+        </div>
+
+    </div>
+
+    <!-- PERFIL -->
+
+    <div class="profile-card">
+
+        <div class="avatar">
+            D
+        </div>
+
+        <div class="profile-info">
+
+            <h3>Directora SIGDEA</h3>
+            <p>Perfil Administrativo</p>
+
+        </div>
+
+    </div>
+
+    <!-- MENÚ -->
+
+    <div class="menu-group">
+
+        <h4>PRINCIPAL</h4>
+
+        <a th:href="@{/directora}" class="menu-item active">
+            🏠 Inicio
+        </a>
+
+        <a href="#" class="menu-item">
+            📊 Dashboard
         </a>
 
     </div>
-</header>
 
-<!-- CONTENEDOR GENERAL -->
-<div class="container">
+    <div class="menu-group">
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
+        <h4>GESTIÓN ACADÉMICA</h4>
 
-        <h2>NAVEGACIÓN</h2>
+        <a th:href="@{/procesos}" class="menu-item">
+            🕸️ Gestión de procesos
+        </a>
 
-        <ul>
+        <a href="#" class="menu-item">
+            📁 Gestión documental
+        </a>
 
-            <li>
-                <a th:href="@{/directora}">
-                    🏠 Inicio
-                </a>
-            </li>
+        <a href="#" class="menu-item">
+            🛡️ Auditoría
+        </a>
 
-            <li>
-                <a th:href="@{/procesos}">
-                    🕸️ Gestión de procesos
-                </a>
-            </li>
+        <a href="#" class="menu-item">
+            📄 Evidencias CNA
+        </a>
 
-            <li>
-                <a href="#">
-                    📁 Gestión documental
-                </a>
-            </li>
+    </div>
 
-            <li>
-                <a href="#">
-                    📊 Indicadores
-                </a>
-            </li>
+    <div class="menu-group">
 
-            <li>
-                <a href="#">
-                    👥 Gestión de usuarios
-                </a>
-            </li>
+        <h4>ANÁLISIS Y COMUNICACIÓN</h4>
 
-            <li>
-                <a href="#">
-                    📢 Publicaciones
-                </a>
-            </li>
+        <a href="#" class="menu-item">
+            📈 Indicadores
+        </a>
 
-            <li>
-                <a href="#">
-                    📅 Calendario
-                </a>
-            </li>
+        <a href="#" class="menu-item">
+            📋 Reportes
+        </a>
 
-            <li>
-                <a href="#">
-                    📋 Reportes
-                </a>
-            </li>
+        <a href="#" class="menu-item">
+            📢 Publicaciones
+        </a>
 
-        </ul>
+        <a href="#" class="menu-item">
+            📅 Calendario
+        </a>
 
-    </aside>
+    </div>
 
-    <!-- CONTENIDO -->
-    <main class="content">
+    <div class="menu-group">
 
-        <!-- BIENVENIDA -->
-        <section class="welcome-card">
+        <h4>ADMINISTRACIÓN</h4>
 
-            <h1>Bienvenida Directora</h1>
+        <a th:href="@{/usuarios}" class="menu-item">
+            👥 Gestión de usuarios
+        </a>
+
+        <a href="#" class="menu-item">
+            ⚙️ Configuración
+        </a>
+
+        <a href="#" class="menu-item">
+            👤 Perfil de usuario
+        </a>
+
+    </div>
+
+</aside>
+
+<!-- CONTENIDO -->
+
+<div class="main">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+        <div class="top-left">
+            SIGDEA
+        </div>
+
+        <div class="top-right">
+
+            <button>
+                🔔
+            </button>
+
+            <a th:href="@{/logout}">
+                ⏻
+            </a>
+
+        </div>
+
+    </header>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <span class="badge">
+                SESIÓN ADMINISTRATIVA
+            </span>
+
+            <h1>
+                Bienvenida,
+                <span>Directora</span>
+            </h1>
 
             <p>
-                Gestiona la acreditación y documentación del programa.
+                Centralice el seguimiento de procesos académicos y gestione la integridad documental del programa académico.
             </p>
 
-        </section>
+            <div class="hero-buttons">
 
-        <!-- TARJETAS -->
-        <section class="cards">
-
-            <div class="card">
-                <span>📁</span>
-                <h2>120</h2>
-                <p>Documentos</p>
-            </div>
-
-            <div class="card">
-                <span>👥</span>
-                <h2>20</h2>
-                <p>Usuarios</p>
-            </div>
-
-            <div class="card">
-                <span>📢</span>
-                <h2>8</h2>
-                <p>Publicaciones</p>
-            </div>
-
-            <div class="card">
-                <span>📈</span>
-                <h2>75%</h2>
-                <p>Avance</p>
-            </div>
-
-        </section>
-
-        <!-- PUBLICACIÓN -->
-        <section class="publication">
-
-            <h2>Nueva Publicación</h2>
-
-            <form>
-
-                <input type="text" placeholder="Título">
-
-                <textarea placeholder="Descripción"></textarea>
-
-                <input type="text" placeholder="URL de imagen">
-
-                <button type="submit">
-                    Publicar
+                <button class="primary-btn">
+                    + NUEVO PROCESO
                 </button>
+
+                <button class="secondary-btn">
+                    VER ESTADÍSTICAS
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="hero-icon">
+            🏛️
+        </div>
+
+    </section>
+
+    <!-- CARDS -->
+
+    <section class="cards">
+
+        <div class="card">
+
+            <span>📁</span>
+
+            <h2>120</h2>
+
+            <p>Documentos Totales</p>
+
+            <div class="progress">
+                <div class="fill red"></div>
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <span>👥</span>
+
+            <h2>20</h2>
+
+            <p>Usuarios Activos</p>
+
+            <div class="progress">
+                <div class="fill gray"></div>
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <span>📈</span>
+
+            <h2>85%</h2>
+
+            <p>Cumplimiento</p>
+
+            <div class="progress">
+                <div class="fill dark"></div>
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <span>📢</span>
+
+            <h2>8</h2>
+
+            <p>Avisos Activos</p>
+
+            <div class="progress">
+                <div class="fill pink"></div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PANEL INFERIOR -->
+
+    <section class="bottom-panels">
+
+        <section class="feed">
+
+            <h2>Publicaciones Recientes</h2>
+
+            <div
+                    class="feed-card"
+                    th:each="c : ${comunicados}"
+            >
+
+                <h3 th:text="${c.titulo}"></h3>
+
+                <p th:text="${c.contenido}"></p>
+
+            </div>
+
+        </section>
+
+        <!-- COMUNICADO -->
+
+        <div class="comunicado">
+
+            <h2>Redactar Comunicado</h2>
+
+            <form th:action="@{/guardar-comunicado}" method="post">
+
+                <input
+                        type="text"
+                        name="titulo"
+                        placeholder="Título del comunicado"
+                        required
+                >
+
+                <textarea
+                        name="contenido"
+                        placeholder="Redacte aquí el mensaje..."
+                        required
+                ></textarea>
+
+                <div class="actions">
+
+                    <button type="submit" class="publish">
+                        PUBLICAR AHORA
+                    </button>
+
+                </div>
 
             </form>
 
-        </section>
+        </div>
 
-    </main>
+
+        <!-- ACTIVIDAD -->
+
+        <div class="actividad">
+
+            <h2>Actividad del Sistema</h2>
+
+            <div class="activity-item">
+
+                <strong>Documento cargado</strong>
+
+                <p>Hace 2h</p>
+
+            </div>
+
+            <div class="activity-item">
+
+                <strong>Nuevo usuario</strong>
+
+                <p>Hace 5h</p>
+
+            </div>
+
+            <div class="activity-item">
+
+                <strong>Aviso publicado</strong>
+
+                <p>Ayer</p>
+
+            </div>
+
+            <div class="activity-item">
+
+                <strong>Cambio de configuración</strong>
+
+                <p>Hace 2 días</p>
+
+            </div>
+
+        </div>
+
+    </section>
 
 </div>
+
+<script>
+
+    function toggleSidebar(){
+
+        document
+            .getElementById("sidebar")
+            .classList.toggle("collapsed");
+
+    }
+
+</script>
 
 </body>
 </html>

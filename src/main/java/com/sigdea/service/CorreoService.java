@@ -11,13 +11,18 @@ public class CorreoService {
     @Autowired
     private JavaMailSender mailSender;
 
-    public void enviarCorreo(String destino, String asunto, String mensaje) {
+    public void enviarCorreo(String destino,
+                             String asunto,
+                             String mensaje) {
 
-        SimpleMailMessage correo = new SimpleMailMessage();
+        SimpleMailMessage correo =
+                new SimpleMailMessage();
 
         correo.setTo(destino);
         correo.setSubject(asunto);
         correo.setText(mensaje);
+
+        correo.setFrom("anamariamoca@ufps.edu.co");
 
         mailSender.send(correo);
     }

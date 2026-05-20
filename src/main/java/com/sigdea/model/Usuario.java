@@ -19,6 +19,8 @@ public class Usuario {
 
     private String rol;
 
+    private String estado;
+
     // GETTERS Y SETTERS
 
     public Long getId() {
@@ -59,5 +61,13 @@ public class Usuario {
 
     public void setRol(String rol) {
         this.rol = rol;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

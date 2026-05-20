@@ -1,27 +1,110 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
 <head>
-    <title>Recuperar contraseña</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recuperar Contraseña</title>
+
     <link rel="stylesheet" th:href="@{/css/recuperar.css}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+          rel="stylesheet">
+
 </head>
+
 <body>
 
-<div class="contenedor">
+<div class="container">
 
-    <h2>Recuperar contraseña</h2>
+    <!-- PANEL IZQUIERDO -->
+    <div class="left-panel">
 
-    <form th:action="@{/recuperar}" method="post">
+        <div class="overlay"></div>
 
-        <input type="email"
-               name="correo"
-               placeholder="Ingrese su correo"
-               required>
+        <div class="contenido">
 
-        <button type="submit">
-            Enviar correo
-        </button>
+            <h1>SIGDEA</h1>
 
-    </form>
+            <div class="linea"></div>
+
+            <h2>
+                Sistema de Gestion Documental y Evidencias de Acreditacion
+            </h2>
+
+            <p>
+                Recupera el acceso a tu cuenta institucional
+                para continuar con la gestión académica
+                y administrativa.
+            </p>
+
+            <div class="footer-left">
+                🔒 UFPS Institucional
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- PANEL DERECHO -->
+    <div class="right-panel">
+
+        <div class="tag">
+            🔐 ACCESO SEGURO
+        </div>
+
+        <h2>Recuperar Contraseña</h2>
+
+        <p class="descripcion">
+            Ingresa tu correo institucional.
+            Te enviaremos un enlace seguro
+            para restablecer tu contraseña.
+        </p>
+
+        <form th:action="@{/recuperar}" method="post">
+
+            <label>
+                CORREO ELECTRÓNICO
+            </label>
+
+            <input
+                    type="email"
+                    name="correo"
+                    placeholder="usuario@ufps.edu.co"
+                    required
+            >
+
+            <button type="submit">
+                ENVIAR ENLACE →
+            </button>
+
+        </form>
+
+        <div class="volver">
+
+            <p>¿Recordaste tu contraseña?</p>
+
+            <a th:href="@{/login}">
+                ← Volver al inicio de sesión
+            </a>
+
+        </div>
+
+        <div class="footer">
+
+            <p>
+                © 2026 Universidad Francisco de Paula Santander
+            </p>
+
+            <span>
+                SIGDEA VERSIÓN 2.0.4
+            </span>
+
+        </div>
+
+    </div>
 
 </div>
 
