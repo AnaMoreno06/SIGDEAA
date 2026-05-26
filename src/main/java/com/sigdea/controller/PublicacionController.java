@@ -38,6 +38,18 @@ public class PublicacionController {
     }
 
     // MOSTRAR DIRECTORA
+// ELIMINAR COMUNICADO
+
+    @GetMapping("/eliminar-comunicado/{id}")
+    public String eliminarComunicado(@PathVariable Long id){
+
+        comunicadoRepository.deleteById(id);
+
+        return "redirect:/directora";
+    }
+
+
+// MOSTRAR DIRECTORA
 
     @GetMapping("/directora")
     public String directora(Model model) {
@@ -49,4 +61,6 @@ public class PublicacionController {
 
         return "directora";
     }
+
+
 }

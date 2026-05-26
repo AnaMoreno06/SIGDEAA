@@ -1,157 +1,355 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Gestión de Procesos</title>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org">
 
-    <link rel="stylesheet" th:href="@{/css/procesos.css}">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Gestión de procesos</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/procesos.css}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 
 <body>
 
-<!-- Barra superior -->
-<header class="topbar">
-    <div class="logo">SIGDEA</div>
+<!-- SIDEBAR -->
 
-    <div class="icons">
-        🔔 ⏻
-    </div>
-</header>
+<aside class="sidebar" id="sidebar">
 
-<div class="main-container">
+    <!-- LOGO -->
 
-    <!-- Menú lateral -->
-    <aside class="sidebar">
+    <div class="logo-area">
 
-        <h2>NAVEGACIÓN</h2>
+        <button class="menu-btn"
+                onclick="toggleSidebar()">
 
-        <ul>
-            <li>
-                <a th:href="@{/directora}">
-                    🏠 Inicio
-                </a>
-            </li>
+            ☰
 
-            <li class="active">
-                <a th:href="@{/procesos}">
-                    📂 Gestión de procesos
-                </a>
-            </li>
+        </button>
 
-            <li>
-                <a href="#">
-                    📊 Indicadores
-                </a>
-            </li>
+        <div class="logo-text">
 
-            <li>
-                <a href="#">
-                    👥 Gestión de usuarios
-                </a>
-            </li>
+            <h1>SIGDEA</h1>
 
-            <li>
-                <a href="#">
-                    📢 Publicaciones
-                </a>
-            </li>
+            <p>UFPS ADMINISTRATIVO</p>
 
-            <li>
-                <a href="#">
-                    📅 Calendario
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    📋 Reportes
-                </a>
-            </li>
-        </ul>
-
-    </aside>
-
-    <!-- Contenido principal -->
-    <main class="content">
-
-        <div class="card">
-
-            <h1>Gestión de procesos estratégicos</h1>
-
-
-
-            <!-- Tabla -->
-            <table>
-
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Código</th>
-                    <th>Nombre</th>
-                    <th>Fecha</th>
-                    <th>Responsable</th>
-                    <th>Tipo</th>
-                    <th>Acciones</th>
-                </tr>
-                </thead>
-
-                <tbody>
-
-                <!-- Recorrido de procesos -->
-                <tr th:each="proceso, iterStat : ${listaProcesos}">
-
-                    <td th:text="${iterStat.count}"></td>
-
-                    <td th:text="${proceso.codigo}"></td>
-
-                    <td th:text="${proceso.nombre}"></td>
-
-                    <td th:text="${proceso.fecha}"></td>
-
-                    <td th:text="${proceso.responsable}"></td>
-
-                    <td th:text="${proceso.tipo}"></td>
-
-                    <td class="acciones">
-
-                        <!-- Ver -->
-                        <a th:href="@{'/proceso/' + ${proceso.id}}"
-                           class="btn-ver">
-                            👁️
-                        </a>
-
-                        <!-- Editar -->
-                        <a th:href="@{'/editarProceso/' + ${proceso.id}}"
-                           class="btn-editar">
-                            ✏️
-                        </a>
-
-                        <!-- Eliminar -->
-                        <a th:href="@{'/eliminarProceso/' + ${proceso.id}}"
-                           class="btn-eliminar">
-                            🗑️
-                        </a>
-
-                    </td>
-
-                </tr>
-
-                </tbody>
-
-            </table>
-            <!-- Botón agregar -->
-            <div class="acciones-superiores">
-
-                <a th:href="@{/nuevoProceso}" class="btn-agregar">
-                    ➕ Agregar nuevo proceso
-                </a>
-
-            </div>
         </div>
 
-    </main>
+    </div>
 
-</div>
+    <!-- PERFIL -->
+
+    <div class="profile-card">
+
+        <div class="avatar">
+            D
+        </div>
+
+        <div class="profile-info">
+
+            <h3>Directora SIGDEA</h3>
+
+            <p>PERFIL ADMINISTRATIVO</p>
+
+        </div>
+
+    </div>
+
+    <!-- MENU -->
+
+    <nav class="menu">
+
+        <p class="menu-title">PRINCIPAL</p>
+
+        <a href="/directora">
+            🏠 Inicio
+        </a>
+
+        <a href="#">
+            📊 Dashboard
+        </a>
+
+        <p class="menu-title">GESTIÓN ACADÉMICA</p>
+
+        <a href="/procesos"
+           class="active">
+
+            🗂 Gestión de procesos
+
+        </a>
+
+        <a href="#">
+            📁 Gestión documental
+        </a>
+
+        <a href="#">
+            🛡 Auditoría
+        </a>
+
+        <a href="#">
+            📄 Evidencias CNA
+        </a>
+
+        <p class="menu-title">
+            ANÁLISIS Y COMUNICACIÓN
+        </p>
+
+        <a href="#">
+            📈 Indicadores
+        </a>
+
+        <a href="#">
+            📋 Reportes
+        </a>
+
+        <a href="#">
+            📢 Publicaciones
+        </a>
+
+        <a href="#">
+            📅 Calendario
+        </a>
+
+        <p class="menu-title">
+            ADMINISTRACIÓN
+        </p>
+
+        <a href="#">
+            👥 Gestión de usuarios
+        </a>
+
+        <a href="#">
+            ⚙ Configuración
+        </a>
+
+        <a href="#">
+            👤 Perfil de usuario
+        </a>
+
+    </nav>
+
+    <!-- ESTADO -->
+
+    <div class="system-status">
+
+        <h4>ESTADO DEL SISTEMA</h4>
+
+        <p>🟢 Sincronizado</p>
+
+    </div>
+
+</aside>
+
+<!-- MAIN -->
+
+<main class="main">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+        <h1>
+            SIGDEA
+        </h1>
+
+        <div class="top-icons">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <i class="fa-regular fa-bell"></i>
+
+            <i class="fa-regular fa-circle-user"></i>
+
+        </div>
+
+    </header>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-top">
+
+            <div>
+
+                <div class="breadcrumb">
+                    Institucional > Procesos Estratégicos
+                </div>
+
+                <h2>
+                    Gestión de procesos
+                </h2>
+
+                <p>
+                    Administre y controle los procesos institucionales.
+                </p>
+
+            </div>
+
+            <a href="/nuevo-proceso"
+               class="nuevo-btn">
+
+                + Nuevo Proceso
+
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- FILTROS -->
+
+    <section class="filters">
+
+        <input type="text"
+               placeholder="Buscar proceso...">
+
+        <select>
+
+            <option>
+                Todos los tipos
+            </option>
+
+            <option>
+                Estratégico
+            </option>
+
+            <option>
+                Académico
+            </option>
+
+        </select>
+
+        <button class="filter-btn">
+
+            <i class="fa-solid fa-sliders"></i>
+
+        </button>
+
+    </section>
+
+    <!-- TABLA -->
+    <section class="tabla-section">
+
+        <table class="tabla-procesos">
+
+            <thead>
+            <tr>
+                <th>Código</th>
+                <th>Proceso</th>
+                <th>Responsable</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <tr th:each="p : ${procesos}">
+
+                <td th:text="${p.codigo}"></td>
+
+                <td th:text="${p.nombre}"></td>
+
+                <td th:text="${p.responsable}"></td>
+
+                <td>
+                <span class="estado activo"
+                      th:text="${p.estado}">
+                </span>
+                </td>
+
+                <td class="acciones">
+
+                    <!-- VER -->
+
+                    <a th:href="@{/ver-proceso/{id}(id=${p.id})}"
+                       class="accion-btn ver">
+
+                        <i class="fa-solid fa-eye"></i>
+
+                    </a>
+
+                    <!-- EDITAR -->
+
+                    <a th:href="@{/editar-proceso/{id}(id=${p.id})}"
+                       class="accion-btn editar">
+
+                        <i class="fa-solid fa-pen"></i>
+
+                    </a>
+
+                    <!-- ELIMINAR -->
+
+                    <a th:href="@{/eliminar-proceso/{id}(id=${p.id})}"
+                       class="accion-btn eliminar">
+
+                        <i class="fa-solid fa-trash"></i>
+
+                    </a>
+
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+    <!-- MÉTRICAS -->
+
+    <section class="metrics">
+
+        <div class="metric-main">
+
+            <h3>
+                Métrica de ejecución
+            </h3>
+
+            <h1>
+                84%
+            </h1>
+
+            <p>
+                Cumplimiento institucional
+            </p>
+
+        </div>
+
+        <div class="metric-card">
+
+            <h4>
+                Total procesos
+            </h4>
+
+            <h1>
+                12
+            </h1>
+
+        </div>
+
+        <div class="metric-card">
+
+            <h4>
+                Pendientes revisión
+            </h4>
+
+            <h1>
+                03
+            </h1>
+
+        </div>
+
+    </section>
+
+</main>
 
 </body>
 </html>

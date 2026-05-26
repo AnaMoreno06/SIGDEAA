@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Proceso | SIGDEA</title>
+
+    <link rel="stylesheet" th:href="@{/css/nuevoProceso.css}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        SIGDEA
+    </div>
+
+    <div class="user-card">
+
+        <div class="avatar">
+            D
+        </div>
+
+        <div class="user-info">
+            <h3>Directora SIGDEA</h3>
+            <p>UFPS ADMINISTRATIVO</p>
+        </div>
+
+    </div>
+
+    <div class="menu">
+
+        <a href="/directora">
+            <i class="fa-solid fa-house"></i>
+            Inicio
+        </a>
+
+        <a href="/procesos" class="active">
+            <i class="fa-solid fa-folder"></i>
+            Gestión de procesos
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-file"></i>
+            Gestión documental
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-chart-column"></i>
+            Indicadores
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-users"></i>
+            Usuarios
+        </a>
+
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <h1>SIGDEA</h1>
+
+        <div class="top-icons">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-regular fa-bell"></i>
+            <i class="fa-regular fa-circle-user"></i>
+        </div>
+
+    </div>
+
+    <!-- FORMULARIO -->
+
+    <div class="form-container">
+
+        <div class="breadcrumb">
+            Institucional > Procesos Estratégicos
+        </div>
+
+        <h1 class="page-title">
+            Nuevo Proceso
+        </h1>
+
+        <p class="subtitle">
+            Registre un nuevo proceso institucional.
+        </p>
+
+        <form action="/guardar-proceso" method="POST">
+
+            <!-- INFORMACIÓN -->
+
+            <div class="section">
+
+                <h2 class="section-title">
+                    <i class="fa-solid fa-circle-info"></i>
+                    Información Básica
+                </h2>
+
+                <div class="form-grid">
+
+                    <div class="input-group">
+
+                        <label>Código</label>
+
+                        <input
+                                type="text"
+                                name="codigo"
+                                placeholder="Ej: PC01"
+                                required
+                        >
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>Nombre del proceso</label>
+
+                        <input
+                                type="text"
+                                name="nombre"
+                                placeholder="Ej: Gestión académica"
+                                required
+                        >
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>Responsable</label>
+
+                        <input
+                                type="text"
+                                name="responsable"
+                                placeholder="Nombre responsable"
+                                required
+                        >
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label>Estado</label>
+
+                        <select name="estado">
+
+                            <option>Activo</option>
+                            <option>Inactivo</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- DEFINICIÓN -->
+
+            <div class="section">
+
+                <h2 class="section-title">
+                    <i class="fa-solid fa-file-lines"></i>
+                    Definición
+                </h2>
+
+                <div class="form-grid">
+
+                    <div class="input-group full">
+
+                        <label>Objetivo</label>
+
+                        <textarea
+                                name="objetivo"
+                                placeholder="Describa el propósito principal del proceso..."
+                        ></textarea>
+
+                    </div>
+
+                    <div class="input-group full">
+
+                        <label>Alcance</label>
+
+                        <textarea
+                                name="alcance"
+                                placeholder="Determine los límites del proceso..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- OPERACIÓN -->
+
+            <div class="section">
+
+                <h2 class="section-title">
+                    <i class="fa-solid fa-rotate"></i>
+                    Operación
+                </h2>
+
+                <div class="form-grid">
+
+                    <div class="input-group full">
+
+                        <label>Entradas / Salidas</label>
+
+                        <textarea
+                                name="entradas"
+                                placeholder="Entradas y salidas del proceso..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RECURSOS -->
+
+            <div class="section">
+
+                <h2 class="section-title">
+                    <i class="fa-solid fa-users"></i>
+                    Recursos
+                </h2>
+
+                <div class="form-grid">
+
+                    <div class="input-group full">
+
+                        <label>Recursos</label>
+
+                        <textarea
+                                name="recursos"
+                                placeholder="Personal, software, infraestructura..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+                <!-- ARCHIVOS -->
+
+                <div class="section">
+
+                    <h2 class="section-title">
+                        <i class="fa-solid fa-paperclip"></i>
+                        Archivos y Evidencias
+                    </h2>
+
+                    <p class="upload-text">
+                        Adjunte documentos PDF, Word, imágenes o enlaces.
+                    </p>
+
+                    <div class="upload-grid">
+
+                        <div class="upload-box">
+
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                            <p>
+                                Arrastra o haz clic para cargar archivos
+                            </p>
+
+                            <span>
+                PDF, DOCX, JPG, PNG
+            </span>
+
+                            <input type="file">
+
+                        </div>
+
+                        <div class="drive-box">
+
+                            <label>Enlace Google Drive</label>
+
+                            <div class="drive-input">
+
+                                <input
+                                        type="text"
+                                        placeholder="https://drive.google.com/"
+                                >
+
+                                <button type="button">
+                                    Agregar
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- BOTONES -->
+
+            <div class="actions">
+
+                <a href="/procesos" class="btn btn-cancel">
+                    Cancelar
+                </a>
+
+                <button type="submit" class="btn btn-save">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Guardar Proceso
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

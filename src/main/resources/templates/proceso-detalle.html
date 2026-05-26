@@ -1,17 +1,314 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h2>Ficha del proceso</h2>
+    <title>Detalle Proceso | SIGDEA</title>
 
-<div class="card">
-    <p><b>Nombre:</b> <span th:text="${proceso.nombre}"></span></p>
-    <p><b>Código:</b> <span th:text="${proceso.codigo}"></span></p>
-    <p><b>Fecha:</b> <span th:text="${proceso.fecha}"></span></p>
-    <p><b>Responsable:</b> <span th:text="${proceso.responsable}"></span></p>
+    <link rel="stylesheet" th:href="@{/css/detalleProceso.css}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            SIGDEA
+        </div>
+
+        <div class="user-card">
+
+            <div class="avatar">D</div>
+
+            <div>
+                <h3>Directora SIGDEA</h3>
+                <p>UFPS</p>
+                <span>ADMINISTRATIVO</span>
+            </div>
+
+        </div>
+
+        <nav class="menu">
+
+            <a href="#">
+                <i class="fa-solid fa-house"></i>
+                Inicio
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-chart-column"></i>
+                Dashboard
+            </a>
+
+            <a class="active" href="#">
+                <i class="fa-solid fa-diagram-project"></i>
+                Gestión de procesos
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-folder"></i>
+                Gestión documental
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-chart-line"></i>
+                Indicadores
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-users"></i>
+                Gestión de usuarios
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-bullhorn"></i>
+                Publicaciones
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-calendar"></i>
+                Calendario
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-file-lines"></i>
+                Reportes
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-shield-halved"></i>
+                Auditoría
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-folder-open"></i>
+                Evidencias CNA
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-gear"></i>
+                Configuración
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <div class="topbar-title">
+                SIGDEA
+            </div>
+
+            <div class="topbar-icons">
+
+                <i class="fa-regular fa-bell"></i>
+                <i class="fa-solid fa-power-off"></i>
+
+            </div>
+
+        </div>
+
+        <!-- HEADER -->
+
+        <div class="page-header">
+
+            <div>
+
+                <p class="breadcrumb">
+                    Institucional > Procesos Estratégicos
+                </p>
+
+                <h1>Detalle del Proceso</h1>
+
+                <span>
+                    Información institucional del proceso.
+                </span>
+
+            </div>
+
+            <div class="header-buttons">
+
+                <button class="download-btn">
+                    <i class="fa-solid fa-download"></i>
+                    Descargar ficha
+                </button>
+
+                <a th:href="@{/editar-proceso/{id}(id=${proceso.id})}"
+                   class="edit-btn">
+
+                    <i class="fa-solid fa-pen"></i>
+                    Editar proceso
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- CARD PRINCIPAL -->
+
+        <section class="process-card">
+
+            <div class="process-top">
+
+                <div class="process-icon">
+                    <i class="fa-solid fa-diagram-project"></i>
+                </div>
+
+                <div class="process-info">
+
+                    <div class="mini-info">
+
+                        <span>CÓDIGO:
+                            <strong th:text="${proceso.codigo}"></strong>
+                        </span>
+
+                        <span class="estado">
+                            <span th:text="${proceso.estado}"></span>
+                        </span>
+
+                    </div>
+
+                    <h2 th:text="${proceso.nombre}"></h2>
+
+                    <div class="process-meta">
+
+                        <div>
+                            <small>RESPONSABLE</small>
+                            <p th:text="${proceso.responsable}"></p>
+                        </div>
+
+                        <div>
+                            <small>VERSIÓN</small>
+                            <p>3.0</p>
+                        </div>
+
+                        <div>
+                            <small>TIPO</small>
+                            <p>Estratégico</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- GRID -->
+
+        <div class="detail-grid">
+
+            <div class="detail-card">
+
+                <h3>Objetivo</h3>
+
+                <p th:text="${proceso.objetivo}"></p>
+
+            </div>
+
+            <div class="detail-card">
+
+                <h3>Alcance</h3>
+
+                <p th:text="${proceso.alcance}"></p>
+
+            </div>
+
+            <div class="detail-card">
+
+                <h3>Entradas / Salidas</h3>
+
+                <p th:text="${proceso.entradas}"></p>
+
+            </div>
+
+            <div class="detail-card">
+
+                <h3>Recursos</h3>
+
+                <p th:text="${proceso.recursos}"></p>
+
+            </div>
+
+        </div>
+
+        <!-- ARCHIVOS -->
+
+        <section class="files-section">
+
+            <div class="files-header">
+
+                <h3>
+                    <i class="fa-solid fa-folder-open"></i>
+                    Archivos y Evidencias
+                </h3>
+
+                <button class="upload-btn">
+                    + Cargar Documento
+                </button>
+
+            </div>
+
+            <table>
+
+                <thead>
+
+                <tr>
+                    <th>Nombre Documento</th>
+                    <th>Tipo</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                </tr>
+
+                </thead>
+
+                <tbody>
+
+                <tr>
+                    <td>Plan_Desarrollo_2024.pdf</td>
+                    <td>PDF</td>
+                    <td>12 Mayo 2024</td>
+                    <td>
+                        <i class="fa-solid fa-download"></i>
+                        <i class="fa-regular fa-eye"></i>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Manual_Funciones.docx</td>
+                    <td>Word</td>
+                    <td>08 Mayo 2024</td>
+                    <td>
+                        <i class="fa-solid fa-download"></i>
+                        <i class="fa-regular fa-eye"></i>
+                    </td>
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
 </div>
+
 </body>
 </html>

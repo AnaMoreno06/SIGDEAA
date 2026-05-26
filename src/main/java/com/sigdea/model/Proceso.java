@@ -1,24 +1,43 @@
 package com.sigdea.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
 
 @Entity
-@Table(name = "procesos")
 public class Proceso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
 
     private String codigo;
+
     private String nombre;
-    private LocalDate fecha;
+
     private String responsable;
-    private String tipo;
+
+    private String estado;
+
+    private String objetivo;
+
+    private String alcance;
+
+    @Column(length = 3000)
+    private String entradas;
+
+    @Column(length = 3000)
+    private String recursos;
+
+    // =========================
+    // GETTERS Y SETTERS
+    // =========================
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCodigo() {
@@ -37,14 +56,6 @@ public class Proceso {
         this.nombre = nombre;
     }
 
-    public LocalDate getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
-    }
-
     public String getResponsable() {
         return responsable;
     }
@@ -53,11 +64,43 @@ public class Proceso {
         this.responsable = responsable;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getObjetivo() {
+        return objetivo;
+    }
+
+    public void setObjetivo(String objetivo) {
+        this.objetivo = objetivo;
+    }
+
+    public String getAlcance() {
+        return alcance;
+    }
+
+    public void setAlcance(String alcance) {
+        this.alcance = alcance;
+    }
+
+    public String getEntradas() {
+        return entradas;
+    }
+
+    public void setEntradas(String entradas) {
+        this.entradas = entradas;
+    }
+
+    public String getRecursos() {
+        return recursos;
+    }
+
+    public void setRecursos(String recursos) {
+        this.recursos = recursos;
     }
 }

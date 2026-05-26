@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Editar proceso</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/procesos.css}">
+
+</head>
+
+<body>
+
+<div class="nuevo-container">
+
+    <div class="nuevo-card">
+
+        <h1>Editar proceso</h1>
+
+        <form th:action="@{/guardar-edicion-proceso}"
+              method="post">
+
+            <input type="hidden"
+                   name="id"
+                   th:value="${proceso.id}">
+
+            <div class="form-group">
+
+                <label>Código</label>
+
+                <input type="text"
+                       name="codigo"
+                       th:value="${proceso.codigo}">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Nombre</label>
+
+                <input type="text"
+                       name="nombre"
+                       th:value="${proceso.nombre}">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Responsable</label>
+
+                <input type="text"
+                       name="responsable"
+                       th:value="${proceso.responsable}">
+
+            </div>
+
+            <button type="submit"
+                    class="guardar-btn">
+
+                Guardar cambios
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

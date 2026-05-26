@@ -208,6 +208,20 @@
         <div class="section-title">
             <span>ACTUALIDAD</span>
             <h2>Últimas Publicaciones</h2>
+            <div class="publicaciones-grid">
+
+                <div
+                        class="publicacion-card"
+                        th:each="c : ${comunicados}"
+                >
+
+                    <h3 th:text="${c.titulo}"></h3>
+
+                    <div th:utext="${c.contenido}"></div>
+
+                </div>
+
+            </div>
         </div>
 
         <div class="row g-4">

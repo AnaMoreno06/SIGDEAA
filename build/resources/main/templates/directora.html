@@ -4,30 +4,42 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SIGDEA</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" th:href="@{/css/directora.css}">
+    <title>SIGDEA | Directora</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          th:href="@{/css/directora.css}">
+
+    <!-- QUILL -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+          rel="stylesheet">
 
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
-
 <aside class="sidebar" id="sidebar">
 
-    <div class="sidebar-top">
+    <!-- LOGO -->
 
-        <button class="toggle-btn" onclick="toggleSidebar()">
+    <div class="logo-area">
+
+        <button class="menu-btn"
+                onclick="toggleSidebar()">
+
             ☰
+
         </button>
 
-        <div class="brand">
+        <div class="logo-text">
 
             <h1>SIGDEA</h1>
-            <span>UFPS ADMINISTRATIVO</span>
+
+            <p>UFPS ADMINISTRATIVO</p>
 
         </div>
 
@@ -44,109 +56,131 @@
         <div class="profile-info">
 
             <h3>Directora SIGDEA</h3>
-            <p>Perfil Administrativo</p>
+
+            <p>PERFIL ADMINISTRATIVO</p>
 
         </div>
 
     </div>
 
-    <!-- MENÚ -->
+    <!-- MENU -->
 
-    <div class="menu-group">
+    <div class="menu">
 
-        <h4>PRINCIPAL</h4>
+        <span class="menu-title">
+            PRINCIPAL
+        </span>
 
-        <a th:href="@{/directora}" class="menu-item active">
-            🏠 Inicio
+        <a href="#" class="active">
+            <span>🏠</span>
+            <span>Inicio</span>
         </a>
 
-        <a href="#" class="menu-item">
-            📊 Dashboard
+        <a href="#">
+            <span>📊</span>
+            <span>Dashboard</span>
+        </a>
+
+        <!-- GESTIÓN -->
+
+        <span class="menu-title">
+            GESTIÓN ACADÉMICA
+        </span>
+
+        <a th:href="@{/procesos}">
+            <span>🕸️</span>
+            <span>Gestión de procesos</span>
+        </a>
+
+        <a href="#">
+            <span>📁</span>
+            <span>Gestión documental</span>
+        </a>
+
+        <a href="#">
+            <span>🛡️</span>
+            <span>Auditoría</span>
+        </a>
+
+        <a href="#">
+            <span>📄</span>
+            <span>Evidencias CNA</span>
+        </a>
+
+        <!-- ANALISIS -->
+
+        <span class="menu-title">
+            ANÁLISIS Y COMUNICACIÓN
+        </span>
+
+        <a href="#">
+            <span>📈</span>
+            <span>Indicadores</span>
+        </a>
+
+        <a href="#">
+            <span>📋</span>
+            <span>Reportes</span>
+        </a>
+
+        <a href="#">
+            <span>📢</span>
+            <span>Publicaciones</span>
+        </a>
+
+        <a href="#">
+            <span>📅</span>
+            <span>Calendario</span>
+        </a>
+
+        <!-- ADMIN -->
+
+        <span class="menu-title">
+            ADMINISTRACIÓN
+        </span>
+
+        <a th:href="@{/usuarios}">
+            <span>👥</span>
+            <span>Gestión de usuarios</span>
+        </a>
+
+        <a href="#">
+            <span>⚙️</span>
+            <span>Configuración</span>
+        </a>
+
+        <a href="#">
+            <span>👤</span>
+            <span>Perfil de usuario</span>
         </a>
 
     </div>
 
-    <div class="menu-group">
+    <!-- ESTADO -->
 
-        <h4>GESTIÓN ACADÉMICA</h4>
+    <div class="system-status">
 
-        <a th:href="@{/procesos}" class="menu-item">
-            🕸️ Gestión de procesos
-        </a>
+        <h4>ESTADO DEL SISTEMA</h4>
 
-        <a href="#" class="menu-item">
-            📁 Gestión documental
-        </a>
-
-        <a href="#" class="menu-item">
-            🛡️ Auditoría
-        </a>
-
-        <a href="#" class="menu-item">
-            📄 Evidencias CNA
-        </a>
-
-    </div>
-
-    <div class="menu-group">
-
-        <h4>ANÁLISIS Y COMUNICACIÓN</h4>
-
-        <a href="#" class="menu-item">
-            📈 Indicadores
-        </a>
-
-        <a href="#" class="menu-item">
-            📋 Reportes
-        </a>
-
-        <a href="#" class="menu-item">
-            📢 Publicaciones
-        </a>
-
-        <a href="#" class="menu-item">
-            📅 Calendario
-        </a>
-
-    </div>
-
-    <div class="menu-group">
-
-        <h4>ADMINISTRACIÓN</h4>
-
-        <a th:href="@{/usuarios}" class="menu-item">
-            👥 Gestión de usuarios
-        </a>
-
-        <a href="#" class="menu-item">
-            ⚙️ Configuración
-        </a>
-
-        <a href="#" class="menu-item">
-            👤 Perfil de usuario
-        </a>
+        <p>🟢 Sincronizado</p>
 
     </div>
 
 </aside>
 
-<!-- CONTENIDO -->
+<!-- MAIN -->
 
-<div class="main">
+<main class="main">
 
     <!-- TOPBAR -->
 
     <header class="topbar">
 
-        <div class="top-left">
-            SIGDEA
-        </div>
+        <h2>SIGDEA</h2>
 
-        <div class="top-right">
+        <div class="top-icons">
 
-            <button>
-                🔔
-            </button>
+            🔔
 
             <a th:href="@{/logout}">
                 ⏻
@@ -160,27 +194,34 @@
 
     <section class="hero">
 
-        <div class="hero-text">
+        <div>
 
             <span class="badge">
+
                 SESIÓN ADMINISTRATIVA
+
             </span>
 
             <h1>
+
                 Bienvenida,
                 <span>Directora</span>
+
             </h1>
 
             <p>
-                Centralice el seguimiento de procesos académicos y gestione la integridad documental del programa académico.
+
+                Centralice el seguimiento
+                académico y administrativo
+                del programa.
+
             </p>
 
             <div class="hero-buttons">
 
-                <button class="primary-btn">
+                <a th:href="@{/procesos}" class="primary-btn">
                     + NUEVO PROCESO
-                </button>
-
+                </a>
                 <button class="secondary-btn">
                     VER ESTADÍSTICAS
                 </button>
@@ -190,7 +231,9 @@
         </div>
 
         <div class="hero-icon">
-            🏛️
+
+            🏛
+
         </div>
 
     </section>
@@ -207,10 +250,6 @@
 
             <p>Documentos Totales</p>
 
-            <div class="progress">
-                <div class="fill red"></div>
-            </div>
-
         </div>
 
         <div class="card">
@@ -221,23 +260,15 @@
 
             <p>Usuarios Activos</p>
 
-            <div class="progress">
-                <div class="fill gray"></div>
-            </div>
-
         </div>
 
         <div class="card">
 
-            <span>📈</span>
+            <span>📊</span>
 
             <h2>85%</h2>
 
             <p>Cumplimiento</p>
-
-            <div class="progress">
-                <div class="fill dark"></div>
-            </div>
 
         </div>
 
@@ -249,104 +280,68 @@
 
             <p>Avisos Activos</p>
 
-            <div class="progress">
-                <div class="fill pink"></div>
-            </div>
-
         </div>
 
     </section>
 
-    <!-- PANEL INFERIOR -->
+    <!-- GRID -->
 
-    <section class="bottom-panels">
-
-        <section class="feed">
-
-            <h2>Publicaciones Recientes</h2>
-
-            <div
-                    class="feed-card"
-                    th:each="c : ${comunicados}"
-            >
-
-                <h3 th:text="${c.titulo}"></h3>
-
-                <p th:text="${c.contenido}"></p>
-
-            </div>
-
-        </section>
+    <section class="content-grid">
 
         <!-- COMUNICADO -->
 
-        <div class="comunicado">
+        <div class="editor-box">
 
             <h2>Redactar Comunicado</h2>
 
-            <form th:action="@{/guardar-comunicado}" method="post">
+            <p>
+                Publique avisos importantes.
+            </p>
 
-                <input
-                        type="text"
-                        name="titulo"
-                        placeholder="Título del comunicado"
-                        required
-                >
+            <form th:action="@{/guardar-comunicado}"
+                  method="post">
 
-                <textarea
-                        name="contenido"
-                        placeholder="Redacte aquí el mensaje..."
-                        required
-                ></textarea>
+                <input type="text"
+                       name="titulo"
+                       placeholder="Título del comunicado"
+                       required>
 
-                <div class="actions">
+                <div id="editor"></div>
 
-                    <button type="submit" class="publish">
-                        PUBLICAR AHORA
-                    </button>
+                <input type="hidden"
+                       name="contenido"
+                       id="contenidoHidden">
 
-                </div>
+                <button type="submit"
+                        class="publish-btn">
+
+                    PUBLICAR AHORA
+
+                </button>
 
             </form>
 
         </div>
 
-
         <!-- ACTIVIDAD -->
 
-        <div class="actividad">
+        <div class="activity-box">
 
             <h2>Actividad del Sistema</h2>
 
             <div class="activity-item">
 
-                <strong>Documento cargado</strong>
+                <h3>Documento cargado</h3>
 
-                <p>Hace 2h</p>
-
-            </div>
-
-            <div class="activity-item">
-
-                <strong>Nuevo usuario</strong>
-
-                <p>Hace 5h</p>
+                <p>Nuevo documento institucional</p>
 
             </div>
 
             <div class="activity-item">
 
-                <strong>Aviso publicado</strong>
+                <h3>Nuevo usuario</h3>
 
-                <p>Ayer</p>
-
-            </div>
-
-            <div class="activity-item">
-
-                <strong>Cambio de configuración</strong>
-
-                <p>Hace 2 días</p>
+                <p>Usuario habilitado correctamente</p>
 
             </div>
 
@@ -354,7 +349,43 @@
 
     </section>
 
-</div>
+    <!-- PUBLICACIONES -->
+
+    <section class="publicaciones">
+
+        <h2>Publicaciones recientes</h2>
+
+        <div class="publicaciones-grid">
+
+            <div class="publicacion-card"
+                 th:each="c : ${comunicados}">
+
+                <h3 th:text="${c.titulo}"></h3>
+
+                <div class="contenido-publicacion">
+
+                    <div th:utext="${c.contenido}"></div>
+
+                </div>
+
+                <a class="delete-btn"
+                   th:href="@{/eliminar-comunicado/{id}(id=${c.id})}">
+
+                    Eliminar
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- QUILL -->
+
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
 <script>
 
@@ -365,6 +396,38 @@
             .classList.toggle("collapsed");
 
     }
+
+    const quill = new Quill('#editor', {
+
+        theme: 'snow',
+
+        placeholder:
+            'Redacte aquí el mensaje institucional...',
+
+        modules: {
+
+            toolbar: [
+
+                ['bold', 'italic', 'underline'],
+
+                [{ list: 'ordered' },
+                    { list: 'bullet' }],
+
+                ['link', 'image'],
+
+                ['clean']
+            ]
+        }
+    });
+
+    document
+        .querySelector("form")
+        .onsubmit = function(){
+
+        document
+            .querySelector("#contenidoHidden")
+            .value = quill.root.innerHTML;
+    };
 
 </script>
 

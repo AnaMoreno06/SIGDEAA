@@ -337,27 +337,62 @@ footer p{
 }
 
 .stat-box h3{
-
     font-size:2.5rem;
-
     color:var(--primary);
-
     font-weight:800;
-
     margin-bottom:10px;
 
 }
 
 .stat-box span{
-
     color:var(--gray);
-
     text-transform:uppercase;
-
     letter-spacing:2px;
-
     font-size:.8rem;
-
     font-weight:700;
 
+}
+.publicaciones-grid{
+    width:85%;
+    margin:50px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.publicacion-card{
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    transition:0.3s;
+    overflow:hidden;
+    word-wrap:break-word;
+
+}
+
+.publicacion-card a{
+    color:#9b0000;
+    font-weight:600;
+    text-decoration:none;
+    word-break:break-word;
+}
+.publicacion-card img{
+    width:100%;
+    border-radius:15px;
+    margin-top:15px;
+}
+.publicacion-card:hover{
+    transform:translateY(-5px);
+}
+
+.publicacion-card h3{
+    color:#8b0000;
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.publicacion-card p{
+    color:#555;
+    line-height:1.7;
 }
