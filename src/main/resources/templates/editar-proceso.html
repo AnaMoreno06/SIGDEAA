@@ -1,73 +1,394 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
     <meta charset="UTF-8">
 
-    <title>Editar proceso</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Editar Proceso | SIGDEA</title>
 
     <link rel="stylesheet"
-          th:href="@{/css/procesos.css}">
+          th:href="@{/css/nuevoProceso.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/editarProceso.css}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 </head>
 
 <body>
 
-<div class="nuevo-container">
+<!-- SIDEBAR -->
 
-    <div class="nuevo-card">
+<div class="sidebar">
 
-        <h1>Editar proceso</h1>
+    <div class="logo">
+        SIGDEA
+    </div>
+
+    <div class="user-card">
+
+        <div class="avatar">
+            <i class="fa-regular fa-user"></i>
+        </div>
+
+        <div class="user-info">
+            <h3>Directora SIGDEA</h3>
+            <p>UFPS</p>
+            <span>ADMINISTRATIVO</span>
+        </div>
+
+    </div>
+
+    <nav class="menu">
+
+        <p class="menu-title">PRINCIPAL</p>
+
+        <a href="/directora">
+            🏠 Inicio
+        </a>
+
+        <a href="/dashboard">
+            📊 Dashboard
+        </a>
+
+        <p class="menu-title">GESTIÓN ACADÉMICA</p>
+
+        <a href="/procesos" class="active">
+            🗂 Gestión de procesos
+        </a>
+
+        <a href="/documentos">
+            📁 Gestión documental
+        </a>
+
+        <a href="/auditoria">
+            🛡 Auditoría
+        </a>
+
+        <a href="/evidencias">
+            📄 Evidencias CNA
+        </a>
+
+        <p class="menu-title">
+            ANÁLISIS Y COMUNICACIÓN
+        </p>
+
+        <a href="/indicadores">
+            📈 Indicadores
+        </a>
+
+        <a href="/reportes">
+            📋 Reportes
+        </a>
+
+        <a href="/publicaciones">
+            📢 Publicaciones
+        </a>
+
+        <a href="/calendario">
+            📅 Calendario
+        </a>
+
+        <p class="menu-title">
+            ADMINISTRACIÓN
+        </p>
+
+        <a href="/usuarios">
+            👥 Gestión de usuarios
+        </a>
+
+        <a href="/configuracion">
+            ⚙ Configuración
+        </a>
+
+        <a href="/perfil">
+            👤 Perfil de usuario
+        </a>
+
+    </nav>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main-content">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+        <div class="topbar-title">
+            SIGDEA
+        </div>
+
+        <div class="topbar-icons">
+
+            <i class="fa-regular fa-bell"></i>
+
+            <i class="fa-solid fa-power-off"></i>
+
+        </div>
+
+    </header>
+
+    <!-- CONTENT -->
+
+    <section class="content">
+
+        <div class="page-header">
+
+            <div>
+
+                <p class="breadcrumb">
+
+                    Institucional > Editar proceso
+
+                </p>
+
+                <h1>Editar Proceso</h1>
+
+            </div>
+
+        </div>
+
+        <!-- FORM -->
 
         <form th:action="@{/guardar-edicion-proceso}"
-              method="post">
+              method="post"
+              enctype="multipart/form-data">
+
+            <!-- ID -->
 
             <input type="hidden"
                    name="id"
                    th:value="${proceso.id}">
 
-            <div class="form-group">
+            <!-- CARD -->
 
-                <label>Código</label>
+            <div class="process-card">
 
-                <input type="text"
-                       name="codigo"
-                       th:value="${proceso.codigo}">
+                <div class="process-header">
+
+                    <div class="process-icon">
+
+                        <i class="fa-solid fa-code-branch"></i>
+
+                    </div>
+
+                    <div class="process-info">
+
+                        <div class="badge-row">
+
+                            <span class="process-code">
+
+                                CÓDIGO:
+                                <span th:text="${proceso.codigo}"></span>
+
+                            </span>
+
+                            <span class="status active">
+
+                                Activo
+
+                            </span>
+
+                        </div>
+
+                        <h2 th:text="${proceso.nombre}"></h2>
+
+                    </div>
+
+                </div>
+
+                <!-- GRID -->
+
+                <div class="edit-grid">
+
+                    ```
+                    <div class="info-card">
+
+                        <h3>Información General</h3>
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label>Código</label>
+                                <input type="text"
+                                       name="codigo"
+                                       th:value="${proceso.codigo}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text"
+                                       name="nombre"
+                                       th:value="${proceso.nombre}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Responsable</label>
+                                <input type="text"
+                                       name="responsable"
+                                       th:value="${proceso.responsable}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Estado</label>
+
+                                <select name="estado">
+
+                                    <option value="Activo">
+                                        Activo
+                                    </option>
+
+                                    <option value="Inactivo">
+                                        Inactivo
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card-box">
+
+                        <h3>Objetivo</h3>
+
+                        <textarea name="objetivo"
+                                  th:text="${proceso.objetivo}"></textarea>
+
+                    </div>
+
+                    <div class="card-box">
+
+                        <h3>Alcance</h3>
+
+                        <textarea name="alcance"
+                                  th:text="${proceso.alcance}"></textarea>
+
+                    </div>
+
+                    <div class="card-box">
+
+                        <h3>Entradas / Salidas</h3>
+
+                        <textarea name="entradas"
+                                  th:text="${proceso.entradas}"></textarea>
+
+                    </div>
+
+                    <div class="card-box">
+
+                        <h3>Recursos</h3>
+
+                        <textarea name="recursos"
+                                  th:text="${proceso.recursos}"></textarea>
+
+                    </div>
+                    ```
+
+                </div>
+
+
+                <!-- ARCHIVOS -->
+
+                <div class="upload-section">
+
+                    <div class="section-title">
+
+                        <i class="fa-regular fa-folder-open"></i>
+
+                        <h3>Actualizar Archivos</h3>
+
+                    </div>
+
+                    <div class="upload-grid">
+
+                        <!-- FILE -->
+
+                        <div class="upload-box">
+
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                            <p>
+                                Cambiar archivo
+                            </p>
+
+                            <span>
+
+                            PDF, DOCX, JPG, PNG
+
+                        </span>
+
+                            <input type="file"
+                                   name="archivo">
+
+                        </div>
+
+                        <!-- DRIVE -->
+
+                        <div class="drive-box">
+
+                            <label>
+
+                                Link Drive
+
+                            </label>
+
+                            <div class="drive-input">
+
+                                <input type="text"
+                                       name="linkDrive"
+                                       th:value="${proceso.linkDrive}">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- BOTONES -->
+
+                <div class="form-actions">
+
+                    <a href="/procesos"
+                       class="btn-secondary">
+
+                        <i class="fa-solid fa-arrow-left"></i>
+
+                        Volver
+
+                    </a>
+
+                    <button type="submit"
+                            class="btn-primary">
+
+                        <i class="fa-regular fa-floppy-disk"></i>
+
+                        Guardar cambios
+
+                    </button>
+
+                </div>
 
             </div>
-
-            <div class="form-group">
-
-                <label>Nombre</label>
-
-                <input type="text"
-                       name="nombre"
-                       th:value="${proceso.nombre}">
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Responsable</label>
-
-                <input type="text"
-                       name="responsable"
-                       th:value="${proceso.responsable}">
-
-            </div>
-
-            <button type="submit"
-                    class="guardar-btn">
-
-                Guardar cambios
-
-            </button>
 
         </form>
 
-    </div>
+    </section>
 
 </div>
 

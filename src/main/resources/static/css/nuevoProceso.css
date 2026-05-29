@@ -10,7 +10,9 @@ body{
     display:flex;
 }
 
-/* SIDEBAR */
+/* =========================
+   SIDEBAR
+========================= */
 
 .sidebar{
     width:280px;
@@ -47,7 +49,6 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    font-weight:bold;
 }
 
 .user-info h3{
@@ -65,6 +66,13 @@ body{
     gap:10px;
 }
 
+.menu-title{
+    margin-top:15px;
+    font-size:13px;
+    font-weight:700;
+    color:#777;
+}
+
 .menu a{
     text-decoration:none;
     color:#444;
@@ -75,23 +83,23 @@ body{
 }
 
 .menu a:hover,
-.menu .active{
+.menu a.active{
     background:#f7eaea;
     color:#a40000;
 }
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
-.main{
+.main-content{
     flex:1;
     padding:25px;
 }
 
-/* TOPBAR */
-
 .topbar{
     background:#a40000;
-    color:white;
+    color:#fff;
     height:75px;
     border-radius:22px;
     display:flex;
@@ -101,20 +109,22 @@ body{
     margin-bottom:25px;
 }
 
-.topbar h1{
-    font-size:34px;
-    font-weight:800;
+.topbar-title{
+    font-size:28px;
+    font-weight:700;
 }
 
-.top-icons{
+.topbar-icons{
     display:flex;
-    gap:18px;
+    gap:20px;
     font-size:20px;
 }
 
-/* FORM */
+/* =========================
+   CONTENIDO
+========================= */
 
-.form-container{
+.content{
     background:#fff;
     border-radius:22px;
     padding:35px;
@@ -126,31 +136,77 @@ body{
     margin-bottom:15px;
 }
 
-.page-title{
+.page-header h1{
     font-size:48px;
-    font-weight:800;
-    margin-bottom:10px;
     color:#222;
+    margin-bottom:10px;
 }
 
 .subtitle{
     color:#666;
-    margin-bottom:35px;
+    margin-bottom:30px;
 }
 
-.section{
+/* =========================
+   CARD PRINCIPAL
+========================= */
+
+.process-card{
+    background:#fff;
     border:1px solid #ecdcdc;
-    border-radius:18px;
+    border-radius:20px;
     padding:25px;
     margin-bottom:25px;
 }
 
-.section-title{
-    color:#a40000;
-    font-size:20px;
-    font-weight:700;
+.process-header{
+    display:flex;
+    align-items:center;
+    gap:20px;
     margin-bottom:25px;
 }
+
+.process-icon{
+    width:70px;
+    height:70px;
+    border-radius:18px;
+    background:#f7eaea;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#a40000;
+    font-size:28px;
+}
+
+.process-info h2{
+    margin-top:8px;
+    font-size:28px;
+}
+
+.badge-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.process-code{
+    font-size:13px;
+    font-weight:700;
+    color:#666;
+}
+
+.status{
+    background:#d8f5df;
+    color:#16803b;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:700;
+}
+
+/* =========================
+   FORMULARIO
+========================= */
 
 .form-grid{
     display:grid;
@@ -158,65 +214,60 @@ body{
     gap:20px;
 }
 
-.input-group{
+.form-group{
     display:flex;
     flex-direction:column;
 }
 
-.input-group label{
+.form-group label{
     margin-bottom:8px;
-    font-size:14px;
     font-weight:600;
     color:#555;
 }
 
-.input-group input,
-.input-group select,
-.input-group textarea{
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
     padding:16px;
     border:1px solid #e6dede;
     border-radius:12px;
-    outline:none;
     font-size:15px;
+    outline:none;
 }
 
-textarea{
-    resize:none;
+.form-group textarea{
     min-height:140px;
+    resize:none;
 }
 
 .full{
-    grid-column:1/3;
+    grid-column:1 / 3;
 }
 
-/* BOTONES */
+/* =========================
+   ARCHIVOS
+========================= */
 
-.actions{
+.upload-section{
+    background:#fff;
+    border:1px solid #ecdcdc;
+    border-radius:20px;
+    padding:25px;
+    margin-bottom:25px;
+}
+
+.section-title{
     display:flex;
-    justify-content:flex-end;
-    gap:15px;
-    margin-top:30px;
+    align-items:center;
+    gap:10px;
+    color:#a40000;
+    margin-bottom:15px;
 }
 
-.btn{
-    padding:15px 28px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:700;
-    text-decoration:none;
+.section-title h3{
+    margin:0;
 }
-
-.btn-cancel{
-    background:#eee;
-    color:#444;
-}
-
-.btn-save{
-    background:#a40000;
-    color:white;
-}
-/* UPLOAD */
 
 .upload-text{
     color:#888;
@@ -285,7 +336,7 @@ textarea{
 
 .drive-input button{
     background:#a40000;
-    color:white;
+    color:#fff;
     border:none;
     border-radius:12px;
     padding:0 25px;
@@ -293,9 +344,44 @@ textarea{
     cursor:pointer;
 }
 
-/* RESPONSIVE */
+/* =========================
+   BOTONES
+========================= */
+
+.form-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:15px;
+    margin-top:30px;
+}
+
+.btn-primary{
+    background:#a40000;
+    color:#fff;
+    border:none;
+    border-radius:12px;
+    padding:15px 28px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.btn-secondary{
+    background:#ececec;
+    color:#333;
+    border-radius:12px;
+    padding:15px 28px;
+    text-decoration:none;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media(max-width:900px){
+
+    .sidebar{
+        display:none;
+    }
 
     .form-grid,
     .upload-grid{
@@ -306,4 +392,7 @@ textarea{
         grid-column:auto;
     }
 
+    .page-header h1{
+        font-size:36px;
+    }
 }

@@ -28,6 +28,12 @@ public class Proceso {
     @Column(length = 3000)
     private String recursos;
 
+    // NUEVO
+
+    private String documento;
+
+    private String linkDrive;
+
     // =========================
     // GETTERS Y SETTERS
     // =========================
@@ -102,5 +108,25 @@ public class Proceso {
 
     public void setRecursos(String recursos) {
         this.recursos = recursos;
+    }
+
+    // DOCUMENTO
+
+    public String getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(String documento) {
+        this.documento = documento;
+    }
+
+    // DRIVE
+
+    public String getLinkDrive() {
+        return linkDrive;
+    }
+
+    public void setLinkDrive(String linkDrive) {
+        this.linkDrive = linkDrive;
     }
 }

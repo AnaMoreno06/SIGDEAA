@@ -37,65 +37,27 @@
 
         <nav class="menu">
 
-            <a href="#">
-                <i class="fa-solid fa-house"></i>
-                Inicio
-            </a>
+            <a href="/inicio">Inicio</a>
 
-            <a href="#">
-                <i class="fa-solid fa-chart-column"></i>
-                Dashboard
-            </a>
+            <a href="/dashboard">Dashboard</a>
 
-            <a class="active" href="#">
-                <i class="fa-solid fa-diagram-project"></i>
-                Gestión de procesos
-            </a>
+            <a href="/procesos">Gestión de procesos</a>
 
-            <a href="#">
-                <i class="fa-solid fa-folder"></i>
-                Gestión documental
-            </a>
+            <a href="/documentos">Gestión documental</a>
 
-            <a href="#">
-                <i class="fa-solid fa-chart-line"></i>
-                Indicadores
-            </a>
+            <a href="/indicadores">Indicadores</a>
 
-            <a href="#">
-                <i class="fa-solid fa-users"></i>
-                Gestión de usuarios
-            </a>
+            <a href="/usuarios">Usuarios</a>
 
-            <a href="#">
-                <i class="fa-solid fa-bullhorn"></i>
-                Publicaciones
-            </a>
+            <a href="/publicaciones">Publicaciones</a>
 
-            <a href="#">
-                <i class="fa-solid fa-calendar"></i>
-                Calendario
-            </a>
+            <a href="/calendario">Calendario</a>
 
-            <a href="#">
-                <i class="fa-solid fa-file-lines"></i>
-                Reportes
-            </a>
+            <a href="/reportes">Reportes</a>
 
-            <a href="#">
-                <i class="fa-solid fa-shield-halved"></i>
-                Auditoría
-            </a>
+            <a href="/auditoria">Auditoría</a>
 
-            <a href="#">
-                <i class="fa-solid fa-folder-open"></i>
-                Evidencias CNA
-            </a>
-
-            <a href="#">
-                <i class="fa-solid fa-gear"></i>
-                Configuración
-            </a>
+            <a href="/evidencias">Evidencias CNA</a>
 
         </nav>
 
@@ -141,11 +103,13 @@
             </div>
 
             <div class="header-buttons">
+                <a th:href="@{/descargar-ficha/{id}(id=${proceso.id})}"
+                   class="btn-download">
 
-                <button class="download-btn">
                     <i class="fa-solid fa-download"></i>
                     Descargar ficha
-                </button>
+
+                </a>
 
                 <a th:href="@{/editar-proceso/{id}(id=${proceso.id})}"
                    class="edit-btn">
@@ -250,61 +214,103 @@
 
         <!-- ARCHIVOS -->
 
-        <section class="files-section">
+        <div class="files-section">
 
             <div class="files-header">
 
                 <h3>
-                    <i class="fa-solid fa-folder-open"></i>
-                    Archivos y Evidencias
-                </h3>
 
-                <button class="upload-btn">
-                    + Cargar Documento
-                </button>
+                    <i class="fa-regular fa-folder-open"></i>
+
+                    Archivos y Evidencias
+
+                </h3>
 
             </div>
 
-            <table>
+            <table class="files-table">
 
                 <thead>
 
                 <tr>
-                    <th>Nombre Documento</th>
-                    <th>Tipo</th>
-                    <th>Fecha</th>
+
+                    <th>Documento</th>
+
                     <th>Acciones</th>
+
                 </tr>
 
                 </thead>
 
                 <tbody>
 
-                <tr>
-                    <td>Plan_Desarrollo_2024.pdf</td>
-                    <td>PDF</td>
-                    <td>12 Mayo 2024</td>
+                <!-- ARCHIVO -->
+
+                <tr th:if="${proceso.documento != null}">
+
                     <td>
-                        <i class="fa-solid fa-download"></i>
-                        <i class="fa-regular fa-eye"></i>
+
+                        <i class="fa-regular fa-file"></i>
+
+                        <span th:text="${proceso.documento}"></span>
+
                     </td>
+
+                    <td class="actions">
+
+                        <!-- VER -->
+
+                        <a th:href="@{'/uploads/' + ${proceso.documento}}"
+                           target="_blank">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                        </a>
+
+                        <!-- DESCARGAR -->
+
+                        <a th:href="@{'/uploads/' + ${proceso.documento}}"
+                           download>
+
+                            <i class="fa-solid fa-download"></i>
+
+                        </a>
+
+                    </td>
+
                 </tr>
 
-                <tr>
-                    <td>Manual_Funciones.docx</td>
-                    <td>Word</td>
-                    <td>08 Mayo 2024</td>
+                <!-- DRIVE -->
+
+                <tr th:if="${proceso.linkDrive != null
+                    and !#strings.isEmpty(proceso.linkDrive)}">
+
                     <td>
-                        <i class="fa-solid fa-download"></i>
-                        <i class="fa-regular fa-eye"></i>
+
+                        <i class="fa-brands fa-google-drive"></i>
+
+                        Google Drive
+
                     </td>
+
+                    <td class="actions">
+
+                        <a th:href="${proceso.linkDrive}"
+                           target="_blank">
+
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                        </a>
+
+                    </td>
+
                 </tr>
 
                 </tbody>
 
             </table>
 
-        </section>
+        </div>
 
     </main>
 

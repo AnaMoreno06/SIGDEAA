@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="es"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Nuevo Proceso | SIGDEA</title>
 
-    <link rel="stylesheet" th:href="@{/css/nuevoProceso.css}">
+    <title>Nuevo Proceso</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/nuevoProceso.css}">
+
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
 </head>
 
 <body>
@@ -24,206 +26,273 @@
     <div class="user-card">
 
         <div class="avatar">
-            D
+            <i class="fa-regular fa-user"></i>
         </div>
 
         <div class="user-info">
             <h3>Directora SIGDEA</h3>
-            <p>UFPS ADMINISTRATIVO</p>
+            <p>UFPS</p>
+            <span>ADMINISTRATIVO</span>
         </div>
 
     </div>
 
-    <div class="menu">
+    <nav class="menu">
+
+        <p class="menu-title">PRINCIPAL</p>
 
         <a href="/directora">
-            <i class="fa-solid fa-house"></i>
-            Inicio
+            🏠 Inicio
         </a>
+
+        <a href="/dashboard">
+            📊 Dashboard
+        </a>
+
+        <p class="menu-title">GESTIÓN ACADÉMICA</p>
 
         <a href="/procesos" class="active">
-            <i class="fa-solid fa-folder"></i>
-            Gestión de procesos
+            🗂 Gestión de procesos
         </a>
 
-        <a href="#">
-            <i class="fa-solid fa-file"></i>
-            Gestión documental
+        <a href="/documentos">
+            📁 Gestión documental
         </a>
 
-        <a href="#">
-            <i class="fa-solid fa-chart-column"></i>
-            Indicadores
+        <a href="/auditoria">
+            🛡 Auditoría
         </a>
 
-        <a href="#">
-            <i class="fa-solid fa-users"></i>
-            Usuarios
+        <a href="/evidencias">
+            📄 Evidencias CNA
         </a>
 
-    </div>
+        <p class="menu-title">
+            ANÁLISIS Y COMUNICACIÓN
+        </p>
+
+        <a href="/indicadores">
+            📈 Indicadores
+        </a>
+
+        <a href="/reportes">
+            📋 Reportes
+        </a>
+
+        <a href="/publicaciones">
+            📢 Publicaciones
+        </a>
+
+        <a href="/calendario">
+            📅 Calendario
+        </a>
+
+        <p class="menu-title">
+            ADMINISTRACIÓN
+        </p>
+
+        <a href="/usuarios">
+            👥 Gestión de usuarios
+        </a>
+
+        <a href="/configuracion">
+            ⚙ Configuración
+        </a>
+
+        <a href="/perfil">
+            👤 Perfil de usuario
+        </a>
+
+    </nav>
 
 </div>
 
 <!-- MAIN -->
 
-<div class="main">
+<div class="main-content">
 
     <!-- TOPBAR -->
 
-    <div class="topbar">
+    <header class="topbar">
 
-        <h1>SIGDEA</h1>
+        <div class="topbar-title">
+            SIGDEA
+        </div>
 
-        <div class="top-icons">
-            <i class="fa-solid fa-magnifying-glass"></i>
+        <div class="topbar-icons">
+
             <i class="fa-regular fa-bell"></i>
-            <i class="fa-regular fa-circle-user"></i>
+
+            <i class="fa-solid fa-power-off"></i>
+
         </div>
 
-    </div>
+    </header>
 
-    <!-- FORMULARIO -->
+    <!-- CONTENIDO -->
 
-    <div class="form-container">
+    <section class="content">
 
-        <div class="breadcrumb">
-            Institucional > Procesos Estratégicos
+        <div class="page-header">
+
+            <div>
+                <p class="breadcrumb">
+                    Institucional > Procesos Estratégicos
+                </p>
+
+                <h1>Nuevo Proceso</h1>
+
+                <p class="subtitle">
+                    Registre información institucional del proceso.
+                </p>
+            </div>
+
         </div>
 
-        <h1 class="page-title">
-            Nuevo Proceso
-        </h1>
+        <!-- FORMULARIO -->
 
-        <p class="subtitle">
-            Registre un nuevo proceso institucional.
-        </p>
+        <form action="/guardar-proceso"
+              method="POST"
+              enctype="multipart/form-data">
 
-        <form action="/guardar-proceso" method="POST">
+            <!-- CARD PRINCIPAL -->
 
-            <!-- INFORMACIÓN -->
+            <div class="process-card">
 
-            <div class="section">
+                <div class="process-header">
 
-                <h2 class="section-title">
-                    <i class="fa-solid fa-circle-info"></i>
-                    Información Básica
-                </h2>
+                    <div class="process-icon">
+                        <i class="fa-solid fa-code-branch"></i>
+                    </div>
+
+                    <div class="process-info">
+
+                        <div class="badge-row">
+
+                            <span class="process-code">
+                                CÓDIGO
+                            </span>
+
+                            <span class="status active">
+                                Activo
+                            </span>
+
+                        </div>
+
+                        <h2>Información General</h2>
+
+                    </div>
+
+                </div>
+
+                <!-- GRID -->
 
                 <div class="form-grid">
 
-                    <div class="input-group">
+                    <!-- CODIGO -->
+
+                    <div class="form-group">
 
                         <label>Código</label>
 
-                        <input
-                                type="text"
-                                name="codigo"
-                                placeholder="Ej: PC01"
-                                required
-                        >
+                        <input type="text"
+                               name="codigo"
+                               placeholder="Ej: PC01"
+                               required>
 
                     </div>
 
-                    <div class="input-group">
+                    <!-- NOMBRE -->
+
+                    <div class="form-group">
 
                         <label>Nombre del proceso</label>
 
-                        <input
-                                type="text"
-                                name="nombre"
-                                placeholder="Ej: Gestión académica"
-                                required
-                        >
+                        <input type="text"
+                               name="nombre"
+                               placeholder="Ej: Orientación Estratégica"
+                               required>
 
                     </div>
 
-                    <div class="input-group">
+                    <!-- RESPONSABLE -->
+
+                    <div class="form-group">
 
                         <label>Responsable</label>
 
-                        <input
-                                type="text"
-                                name="responsable"
-                                placeholder="Nombre responsable"
-                                required
-                        >
+                        <input type="text"
+                               name="responsable"
+                               placeholder="Ej: Dr. Carlos Méndez"
+                               required>
 
                     </div>
 
-                    <div class="input-group">
+                    <!-- ESTADO -->
+
+                    <div class="form-group">
 
                         <label>Estado</label>
 
                         <select name="estado">
 
-                            <option>Activo</option>
-                            <option>Inactivo</option>
+                            <option value="Activo">
+                                Activo
+                            </option>
+
+                            <option value="Inactivo">
+                                Inactivo
+                            </option>
 
                         </select>
 
                     </div>
 
-                </div>
+                    <!-- OBJETIVO -->
 
-            </div>
-
-            <!-- DEFINICIÓN -->
-
-            <div class="section">
-
-                <h2 class="section-title">
-                    <i class="fa-solid fa-file-lines"></i>
-                    Definición
-                </h2>
-
-                <div class="form-grid">
-
-                    <div class="input-group full">
+                    <div class="form-group full">
 
                         <label>Objetivo</label>
 
-                        <textarea
-                                name="objetivo"
-                                placeholder="Describa el propósito principal del proceso..."
-                        ></textarea>
+                        <textarea name="objetivo"
+                                  placeholder="Describa el objetivo institucional..."
+                                  required></textarea>
 
                     </div>
 
-                    <div class="input-group full">
+                    <!-- ALCANCE -->
+
+                    <div class="form-group full">
 
                         <label>Alcance</label>
 
-                        <textarea
-                                name="alcance"
-                                placeholder="Determine los límites del proceso..."
-                        ></textarea>
+                        <textarea name="alcance"
+                                  placeholder="Describa el alcance del proceso..."
+                                  required></textarea>
 
                     </div>
 
-                </div>
+                    <!-- ENTRADAS -->
 
-            </div>
-
-            <!-- OPERACIÓN -->
-
-            <div class="section">
-
-                <h2 class="section-title">
-                    <i class="fa-solid fa-rotate"></i>
-                    Operación
-                </h2>
-
-                <div class="form-grid">
-
-                    <div class="input-group full">
+                    <div class="form-group full">
 
                         <label>Entradas / Salidas</label>
 
-                        <textarea
-                                name="entradas"
-                                placeholder="Entradas y salidas del proceso..."
-                        ></textarea>
+                        <textarea name="entradas"
+                                  placeholder="Ej: Informes, indicadores, documentos..."
+                                  required></textarea>
+
+                    </div>
+
+                    <!-- RECURSOS -->
+
+                    <div class="form-group full">
+
+                        <label>Recursos</label>
+
+                        <textarea name="recursos"
+                                  placeholder="Ej: Humanos, tecnológicos, infraestructura..."
+                                  required></textarea>
 
                     </div>
 
@@ -231,76 +300,64 @@
 
             </div>
 
-            <!-- RECURSOS -->
+            <!-- ARCHIVOS -->
 
-            <div class="section">
+            <div class="upload-section">
 
-                <h2 class="section-title">
-                    <i class="fa-solid fa-users"></i>
-                    Recursos
-                </h2>
+                <div class="section-title">
 
-                <div class="form-grid">
+                    <i class="fa-regular fa-folder-open"></i>
 
-                    <div class="input-group full">
+                    <h3>Archivos y Evidencias</h3>
 
-                        <label>Recursos</label>
+                </div>
 
-                        <textarea
-                                name="recursos"
-                                placeholder="Personal, software, infraestructura..."
-                        ></textarea>
+                <p class="upload-text">
+                    Adjunte documentos PDF, Word, imágenes o enlaces Drive.
+                </p>
+
+                <div class="upload-grid">
+
+                    <!-- ARCHIVO -->
+
+                    <div class="upload-box">
+
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                        <p>
+                            Arrastra o haz clic para cargar archivos
+                        </p>
+
+                        <span>
+                            PDF, DOCX, JPG, PNG
+                        </span>
+
+                        <input type="file"
+                               name="archivo">
 
                     </div>
 
-                </div>
-                <!-- ARCHIVOS -->
+                    <!-- DRIVE -->
 
-                <div class="section">
+                    <div class="drive-box">
 
-                    <h2 class="section-title">
-                        <i class="fa-solid fa-paperclip"></i>
-                        Archivos y Evidencias
-                    </h2>
+                        <label>
+                            Enlace de Google Drive
+                        </label>
 
-                    <p class="upload-text">
-                        Adjunte documentos PDF, Word, imágenes o enlaces.
-                    </p>
+                        <div class="drive-input">
 
-                    <div class="upload-grid">
+                            <input type="text"
+                                   name="linkDrive"
+                                   placeholder="https://drive.google.com/">
 
-                        <div class="upload-box">
+                            <button type="button">
 
-                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <i class="fa-solid fa-plus"></i>
 
-                            <p>
-                                Arrastra o haz clic para cargar archivos
-                            </p>
+                                Agregar
 
-                            <span>
-                PDF, DOCX, JPG, PNG
-            </span>
-
-                            <input type="file">
-
-                        </div>
-
-                        <div class="drive-box">
-
-                            <label>Enlace Google Drive</label>
-
-                            <div class="drive-input">
-
-                                <input
-                                        type="text"
-                                        placeholder="https://drive.google.com/"
-                                >
-
-                                <button type="button">
-                                    Agregar
-                                </button>
-
-                            </div>
+                            </button>
 
                         </div>
 
@@ -312,22 +369,29 @@
 
             <!-- BOTONES -->
 
-            <div class="actions">
+            <div class="form-actions">
 
-                <a href="/procesos" class="btn btn-cancel">
-                    Cancelar
+                <a href="/procesos" class="btn-secondary">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Volver
+
                 </a>
 
-                <button type="submit" class="btn btn-save">
-                    <i class="fa-solid fa-floppy-disk"></i>
-                    Guardar Proceso
+                <button type="submit" class="btn-primary">
+
+                    <i class="fa-regular fa-floppy-disk"></i>
+
+                    Guardar proceso
+
                 </button>
 
             </div>
 
         </form>
 
-    </div>
+    </section>
 
 </div>
 
