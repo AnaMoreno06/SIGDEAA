@@ -22,9 +22,9 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import java.io.ByteArrayOutputStream;
 import java.awt.Color;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
 
 import org.springframework.http.MediaType;
-
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
@@ -44,7 +44,7 @@ public class ProcesoController {
     // ======================================
 
     @GetMapping("/procesos")
-    public String procesos(Model model){
+    public String procesos(Model model) {
 
         model.addAttribute(
                 "procesos",
@@ -59,7 +59,7 @@ public class ProcesoController {
     // ======================================
 
     @GetMapping("/nuevo-proceso")
-    public String nuevoProceso(){
+    public String nuevoProceso() {
 
         return "nuevo-proceso";
     }
@@ -151,7 +151,7 @@ public class ProcesoController {
     @GetMapping("/eliminar-proceso/{id}")
     public String eliminarProceso(
             @PathVariable Long id
-    ){
+    ) {
 
         procesoRepository.deleteById(id);
 
@@ -165,7 +165,7 @@ public class ProcesoController {
             @PathVariable Long id,
             Model model
 
-    ){
+    ) {
 
         Proceso proceso =
                 procesoRepository.findById(id).orElse(null);
@@ -184,7 +184,7 @@ public class ProcesoController {
             @PathVariable Long id,
             Model model
 
-    ){
+    ) {
 
         Proceso proceso =
                 procesoRepository.findById(id).orElse(null);
@@ -269,6 +269,8 @@ public class ProcesoController {
 
         return "redirect:/procesos";
     }
+
+
     @GetMapping("/descargar-ficha/{id}")
     public ResponseEntity<byte[]> descargarFicha(
             @PathVariable Long id) throws Exception {
@@ -277,57 +279,165 @@ public class ProcesoController {
                 procesoRepository.findById(id).orElse(null);
 
         PDDocument document = new PDDocument();
-        PDPage page = new PDPage();
+
+        PDPage page = new PDPage(PDRectangle.A4);
 
         document.addPage(page);
 
         PDPageContentStream content =
                 new PDPageContentStream(document, page);
 
-        // Línea roja superior
-        content.setStrokingColor(
-                new java.awt.Color(164, 0, 0)
-        );
-        content.setLineWidth(3);
-        content.moveTo(50, 760);
-        content.lineTo(550, 760);
+        // =========================
+        // COLORES
+        // =========================
+
+        Color rojo = new Color(150, 0, 0);
+        Color gris = new Color(240, 240, 240);
+        Color negro = Color.BLACK;
+
+        // =========================
+        // FONDO ENCABEZADO
+        // =========================
+
+        content.setNonStrokingColor(gris);
+
+        content.addRect(40, 690, 520, 100);
+
+        content.fill();
+
+        // =========================
+        // LINEA SUPERIOR
+        // =========================
+
+        content.setStrokingColor(rojo);
+
+        content.setLineWidth(4);
+
+        content.moveTo(40, 790);
+
+        content.lineTo(560, 790);
+
         content.stroke();
 
-        // Título
+        // =========================
+        // TITULO
+        // =========================
+
         content.beginText();
+
+        content.setNonStrokingColor(negro);
 
         content.setFont(
                 new PDType1Font(
                         Standard14Fonts.FontName.HELVETICA_BOLD
                 ),
-                22
+                30
         );
 
-        content.newLineAtOffset(50, 720);
+        content.newLineAtOffset(60, 735);
+
         content.showText("SIGDEA");
 
-        content.newLineAtOffset(0, -40);
-        content.showText("FICHA DEL PROCESO");
-
-        // Datos
         content.setFont(
                 new PDType1Font(
-                        Standard14Fonts.FontName.HELVETICA
+                        Standard14Fonts.FontName.HELVETICA_BOLD
                 ),
-                13
+                24
         );
 
-        content.newLineAtOffset(0, -50);
-        content.showText("Codigo: PRUEBA");
+        content.newLineAtOffset(0, -40);
 
-        content.newLineAtOffset(0, -25);
-        content.showText("Nombre: PRUEBA");
+        content.showText("FICHA DEL PROCESO");
 
-        content.newLineAtOffset(0, -25);
-        content.showText("Responsable: PRUEBA");
+        content.endText();
 
-        content.newLineAtOffset(0, -25);
-        content.showText("Estado: ACTIVO");
+        // =========================
+        // TABLA DE INFORMACION
+        // =========================
+
+        float y = 620;
+
+        String[][] datos = {
+                {"Codigo", proceso.getCodigo()},
+                {"Nombre", proceso.getNombre()},
+                {"Responsable", proceso.getResponsable()},
+                {"Estado", proceso.getEstado()},
+                {"Objetivo", proceso.getObjetivo()},
+                {"Alcance", proceso.getAlcance()},
+                {"Entradas/Salidas", proceso.getEntradas()},
+                {"Recursos", proceso.getRecursos()}
+        };
+
+        for (String[] fila : datos) {
+
+            // Fondo gris fila
+            content.setNonStrokingColor(
+                    new Color(250, 250, 250)
+            );
+
+            content.addRect(50, y - 15, 500, 30);
+
+            content.fill();
+
+            // Borde fila
+            content.setStrokingColor(Color.LIGHT_GRAY);
+
+            content.addRect(50, y - 15, 500, 30);
+
+            content.stroke();
+
+            // Texto
+            content.beginText();
+
+            content.setNonStrokingColor(negro);
+
+            content.setFont(
+                    new PDType1Font(
+                            Standard14Fonts.FontName.HELVETICA_BOLD
+                    ),
+                    12
+            );
+
+            content.newLineAtOffset(60, y);
+
+            content.showText(fila[0] + ":");
+
+            content.setFont(
+                    new PDType1Font(
+                            Standard14Fonts.FontName.HELVETICA
+                    ),
+                    12
+            );
+
+            content.newLineAtOffset(130, 0);
+
+            content.showText(
+                    fila[1] != null ? fila[1] : ""
+            );
+
+            content.endText();
+
+            y -= 45;
+        }
+
+        // =========================
+        // PIE DE PAGINA
+        // =========================
+
+        content.beginText();
+
+        content.setFont(
+                new PDType1Font(
+                        Standard14Fonts.FontName.HELVETICA_OBLIQUE
+                ),
+                10
+        );
+
+        content.newLineAtOffset(180, 40);
+
+        content.showText(
+                "Sistema Integrado de Gestion Documental"
+        );
 
         content.endText();
 
@@ -337,6 +447,7 @@ public class ProcesoController {
                 new ByteArrayOutputStream();
 
         document.save(baos);
+
         document.close();
 
         return ResponseEntity.ok()
@@ -347,12 +458,4 @@ public class ProcesoController {
                 .contentType(MediaType.APPLICATION_PDF)
                 .body(baos.toByteArray());
     }
-
-    // content.showText("Codigo: " + proceso.getCodigo());
-// content.showText("Nombre: " + proceso.getNombre());
-// content.showText("Responsable: " + proceso.getResponsable());
-// content.showText("Estado: " + proceso.getEstado());
-// content.showText("Objetivo: " + proceso.getObjetivo());
-// content.showText("Alcance: " + proceso.getAlcance());
-
 }
