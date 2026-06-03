@@ -247,27 +247,60 @@ public class ProcesoController {
         cs.lineTo(margenIzq + 380, pageHeight - 10);
         cs.stroke();
 
-        // LOGO — usando ClassPathResource para funcionar tanto en dev como en producción
+        // LOGO — intenta 3 métodos en cascada hasta que uno funcione
+        byte[] logoBytes = null;
+
+        // Método 1: ClassPathResource (funciona en JAR empaquetado)
         try {
             ClassPathResource logoResource =
-                    new ClassPathResource("static/img/logo_sistemas.png");
+                    new ClassPathResource("static/imagen/logo_sistemas.png");
             InputStream logoStream = logoResource.getInputStream();
+            logoBytes = logoStream.readAllBytes();
+            logoStream.close();
+        } catch (Exception ignored) {}
+
+        // Método 2: getResourceAsStream desde el ClassLoader
+        if (logoBytes == null) {
+            try {
+                InputStream logoStream = getClass()
+                        .getClassLoader()
+                        .getResourceAsStream("static/imagen/logo_sistemas.png");
+                if (logoStream != null) {
+                    logoBytes = logoStream.readAllBytes();
+                    logoStream.close();
+                }
+            } catch (Exception ignored) {}
+        }
+
+        // Método 3: Ruta absoluta en disco (útil en desarrollo local)
+        if (logoBytes == null) {
+            try {
+                File logoFile = new File(
+                        "src/main/resources/static/imagen/logo_sistemas.png"
+                );
+                if (logoFile.exists()) {
+                    logoBytes = Files.readAllBytes(logoFile.toPath());
+                }
+            } catch (Exception ignored) {}
+        }
+
+        // Dibujar logo si se encontró, o placeholder
+        if (logoBytes != null) {
             PDImageXObject logo =
                     PDImageXObject.createFromByteArray(
                             document,
-                            logoStream.readAllBytes(),
+                            logoBytes,
                             "logo_sistemas"
                     );
             cs.drawImage(logo, margenIzq + 5, pageHeight - 72, 105, 52);
-        } catch (Exception e) {
-            // Placeholder si no encuentra el logo
+        } else {
             cs.setNonStrokingColor(new Color(220, 220, 220));
             cs.addRect(margenIzq + 5, pageHeight - 72, 105, 52);
             cs.fill();
             cs.setNonStrokingColor(grisTexto);
             cs.beginText();
             cs.setFont(normal, 7);
-            cs.newLineAtOffset(margenIzq + 20, pageHeight - 44);
+            cs.newLineAtOffset(margenIzq + 35, pageHeight - 44);
             cs.showText("LOGO");
             cs.endText();
         }
