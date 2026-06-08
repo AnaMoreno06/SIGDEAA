@@ -106,8 +106,10 @@
                 </button>
 
                 <button class="descargar"
-                        onclick="descargarDocumento()">
+                        onclick="descargarPDF()">
+
                     ⬇ Descargar
+
                 </button>
 
             </div>
@@ -212,21 +214,27 @@
 <script>
 
     function toggleSidebar(){
+
         document
             .querySelector(".sidebar")
             .classList.toggle("collapsed");
+
     }
 
-    function verHistorial(){
-        alert("Mostrando historial");
-    }
+    function descargarPDF(){
 
-    function nuevaVersion(){
-        alert("Crear nueva versión");
-    }
+        const enlace = document.createElement("a");
 
-    function descargarDocumento(){
-        alert("Descargando documento...");
+        enlace.href = "/docs/documento.pdf";
+
+        enlace.download = "Plan_Estrategico_UFPS_2025.pdf";
+
+        document.body.appendChild(enlace);
+
+        enlace.click();
+
+        document.body.removeChild(enlace);
+
     }
 
 </script>

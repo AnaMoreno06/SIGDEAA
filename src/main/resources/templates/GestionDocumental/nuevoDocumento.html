@@ -1,10 +1,549 @@
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SIGDEA | Nuevo Documento</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/nuevoDocumento.css}">
+
 </head>
+
 <body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar"
+           id="sidebar">
+
+        <div class="logo">
+
+            <button onclick="toggleSidebar()">
+                ☰
+            </button>
+
+            <div>
+
+                <h2>SIGDEA</h2>
+
+                <p>UFPS SISTEMA INSTITUCIONAL</p>
+
+            </div>
+
+        </div>
+
+        <div class="usuario">
+
+            <div class="avatar">
+                D
+            </div>
+
+            <div>
+
+                <h4>Directora SIGDEA</h4>
+
+                <span>Perfil Administrativo</span>
+
+            </div>
+
+        </div>
+
+        <nav>
+
+            <p class="menu-title">
+                MENÚ PRINCIPAL
+            </p>
+
+            <a th:href="@{/inicio}">
+                🏠 Inicio
+            </a>
+
+            <a th:href="@{/dashboard}">
+                📊 Dashboard
+            </a>
+
+            <a th:href="@{/procesos}">
+                🕸 Gestión de procesos
+            </a>
+
+            <a class="active"
+               th:href="@{/gestion-documental}">
+
+                📁 Gestión documental
+
+            </a>
+
+            <a th:href="@{/indicadores}">
+                📈 Indicadores
+            </a>
+
+            <a th:href="@{/usuarios}">
+                👥 Gestión de usuarios
+            </a>
+
+            <a th:href="@{/publicaciones}">
+                📢 Publicaciones
+            </a>
+
+            <a th:href="@{/calendario}">
+                📅 Calendario
+            </a>
+
+            <a th:href="@{/reportes}">
+                📋 Reportes
+            </a>
+
+            <a th:href="@{/auditoria}">
+                🛡 Auditoría
+            </a>
+
+            <a th:href="@{/evidencias}">
+                📄 Evidencias CNA
+            </a>
+
+            <p class="menu-title">
+                SISTEMA
+            </p>
+
+            <a th:href="@{/configuracion}">
+                ⚙ Configuración
+            </a>
+
+            <a th:href="@{/perfil}">
+                👤 Perfil de usuario
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="top-left">
+
+                <h1>SIGDEA UFPS</h1>
+
+                <span>
+                    Gestión Documental Estratégica
+                </span>
+
+            </div>
+
+            <div class="top-right">
+
+                🔔
+
+                <div class="user-circle">
+                    JD
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- CONTENT -->
+
+        <div class="content">
+
+            <!-- BREADCRUMB -->
+
+            <div class="breadcrumb">
+
+                GESTIÓN >
+
+                EXPEDIENTES >
+
+                <span>
+                    NUEVO DOCUMENTO
+                </span>
+
+            </div>
+
+            <!-- HEADER -->
+
+            <div class="page-header">
+
+                <div>
+
+                    <h2>
+                        Crear Nuevo Documento
+                    </h2>
+
+                    <p>
+                        Registro de archivos en el sistema
+                        de gestión académica.
+                    </p>
+
+                </div>
+
+                <div class="header-buttons">
+
+                    <a th:href="@{/gestion-documental}"
+                       class="btn-cancel">
+
+                        Cancelar
+
+                    </a>
+
+                    <button onclick="guardarDocumento()"
+                            class="btn-save">
+
+                        💾 Guardar Documento
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- FORM -->
+
+            <form class="formulario">
+
+                <!-- INFORMACIÓN GENERAL -->
+
+                <section class="card">
+
+                    <div class="card-title">
+
+                        ℹ Información General
+
+                    </div>
+
+                    <div class="grid-2">
+
+                        <div class="full">
+
+                            <label>
+                                Nombre del documento
+                            </label>
+
+                            <input type="text"
+                                   placeholder="Ej. Acta de Consejo de Facultad 001">
+
+                        </div>
+
+                        <div class="full">
+
+                            <label>
+                                Descripción
+                            </label>
+
+                            <textarea placeholder="Breve descripción del contenido..."></textarea>
+
+                        </div>
+
+                        <div>
+
+                            <label>
+                                Tipo de documento
+                            </label>
+
+                            <select>
+
+                                <option>
+                                    Seleccione tipo...
+                                </option>
+
+                                <option>
+                                    Acta
+                                </option>
+
+                                <option>
+                                    Resolución
+                                </option>
+
+                                <option>
+                                    Informe
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div>
+
+                            <label>
+                                Dependencia
+                            </label>
+
+                            <select>
+
+                                <option>
+                                    Facultad de Ingeniería
+                                </option>
+
+                                <option>
+                                    Dirección Académica
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="full">
+
+                            <label>
+                                Responsable
+                            </label>
+
+                            <input type="text"
+                                   placeholder="Nombre completo del funcionario">
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- PARÁMETROS -->
+
+                <section class="card">
+
+                    <div class="card-title">
+
+                        ⚙ Parámetros Técnicos
+
+                    </div>
+
+                    <div class="grid-3">
+
+                        <div>
+
+                            <label>
+                                Vigencia
+                            </label>
+
+                            <input type="date">
+
+                        </div>
+
+                        <div>
+
+                            <label>
+                                Estado
+                            </label>
+
+                            <select>
+
+                                <option>
+                                    Borrador
+                                </option>
+
+                                <option>
+                                    Vigente
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div>
+
+                            <label>
+                                Periodo Académico
+                            </label>
+
+                            <select>
+
+                                <option>
+                                    2024-1
+                                </option>
+
+                                <option>
+                                    2024-2
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- CNA -->
+
+                <section class="card">
+
+                    <div class="card-title">
+
+                        🛡 Acreditación CNA
+
+                    </div>
+
+                    <div class="grid-2">
+
+                        <div>
+
+                            <label>
+                                Factor
+                            </label>
+
+                            <select>
+
+                                <option>
+                                    Factor 1: Proyecto Institucional
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div>
+
+                            <label>
+                                Característica
+                            </label>
+
+                            <select>
+
+                                <option>
+                                    Seleccione característica...
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div>
+
+                            <label>
+                                Aspecto
+                            </label>
+
+                            <select>
+
+                                <option>
+                                    Seleccione aspecto...
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div>
+
+                            <label>
+                                Indicador
+                            </label>
+
+                            <input type="text"
+                                   placeholder="Código indicador">
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- PDF -->
+
+                <section class="card">
+
+                    <div class="card-title">
+
+                        📄 Archivo PDF
+
+                    </div>
+
+                    <label>
+                        Seleccionar documento PDF
+                    </label>
+
+                    <input type="file"
+                           accept=".pdf">
+
+                </section>
+
+                <!-- LINK -->
+
+                <section class="card">
+
+                    <div class="card-title">
+
+                        🔗 Enlace Externo
+
+                    </div>
+
+                    <div class="link-box">
+
+                        <input type="url"
+                               id="driveLink"
+                               placeholder="https://drive.google.com/...">
+
+                        <button type="button"
+                                onclick="probarLink()">
+
+                            Probar Link
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script>
+
+    function toggleSidebar(){
+
+        document
+            .getElementById("sidebar")
+            .classList.toggle("collapsed");
+
+    }
+
+    function probarLink(){
+
+        const link =
+            document.getElementById("driveLink").value;
+
+        if(link === ""){
+
+            alert(
+                "Ingrese un enlace primero"
+            );
+
+            return;
+
+        }
+
+        window.open(link, "_blank");
+
+    }
+
+    function guardarDocumento(){
+
+        alert(
+            "Documento guardado correctamente"
+        );
+
+    }
+
+</script>
 
 </body>
 </html>
+```

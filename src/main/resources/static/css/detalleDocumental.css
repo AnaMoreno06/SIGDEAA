@@ -11,6 +11,13 @@ body{
 
 .layout{
     display:flex;
+    min-height:100vh;
+}
+
+html,
+body{
+    overflow-x:hidden;
+    scroll-behavior:smooth;
 }
 
 .sidebar{
@@ -18,11 +25,25 @@ body{
     background:white;
     height:100vh;
     border-right:1px solid #eee;
-    overflow:auto;
+    overflow-y:auto;
+    overflow-x:hidden;
+    position:sticky;
+    top:0;
 }
-html{
-    overflow:hidden;
+
+/* QUITA BARRAS GRISES */
+
+.sidebar::-webkit-scrollbar,
+body::-webkit-scrollbar{
+    width:0;
+    display:none;
 }
+
+.sidebar,
+body{
+    scrollbar-width:none;
+}
+
 .logo{
     background:#980000;
     color:white;
@@ -83,19 +104,33 @@ nav .active{
 
 .main{
     flex:1;
-    padding:25px;
+    padding:20px;
+    overflow-x:hidden;
 }
 
 .topbar{
     background:#980000;
-    height:70px;
-    border-radius:18px;
+    min-height:72px;
+    border-radius:22px;
     padding:0 30px;
     display:flex;
     justify-content:space-between;
     align-items:center;
     color:white;
     margin-bottom:25px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+}
+
+.titulo{
+    font-size:32px;
+    font-weight:700;
+}
+
+.acciones-top{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    font-size:22px;
 }
 
 .cabecera{
