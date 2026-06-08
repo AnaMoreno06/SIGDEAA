@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Documento</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/detalleDocumental.css}">
+</head>
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <button onclick="toggleSidebar()">☰</button>
+            <h2>SIGDEA</h2>
+        </div>
+
+        <div class="usuario">
+            <div class="avatar">👤</div>
+            <div>
+                <h4>Directora SIGDEA</h4>
+                <p>UFPS Administrativo</p>
+            </div>
+        </div>
+
+        <nav>
+
+            <a href="#">🏠 Inicio</a>
+            <a href="#">📊 Dashboard</a>
+            <a href="#">⚙ Gestión de procesos</a>
+
+            <a href="#" class="active">
+                📁 Gestión documental
+            </a>
+
+            <a href="#">📈 Indicadores</a>
+            <a href="#">👥 Gestión de usuarios</a>
+            <a href="#">📢 Publicaciones</a>
+            <a href="#">📅 Calendario</a>
+            <a href="#">📋 Reportes</a>
+            <a href="#">🛡 Auditoría</a>
+            <a href="#">📄 Evidencias CNA</a>
+            <a href="#">⚙ Configuración</a>
+            <a href="#">👤 Perfil</a>
+
+        </nav>
+
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div class="titulo">
+                SIGDEA
+            </div>
+
+            <div class="acciones-top">
+                🔔
+                👤
+            </div>
+
+        </header>
+
+        <section class="cabecera">
+
+            <div>
+
+                <div class="ruta">
+                    Gestión documental >
+                    Proyectos 2024 >
+                    <b>Detalle Documento</b>
+                </div>
+
+                <div class="badges">
+
+                    <span class="version">
+                        v2.4.0
+                    </span>
+
+                    <span class="codigo">
+                        ID: DOC-2024-089
+                    </span>
+
+                </div>
+
+                <h1>
+                    Plan Estratégico de Desarrollo
+                    Institucional - UFPS 2025
+                </h1>
+
+            </div>
+
+            <div class="botones">
+
+                <button onclick="verHistorial()">
+                    ↺ Ver historial
+                </button>
+
+                <button onclick="nuevaVersion()">
+                    ⊕ Nueva versión
+                </button>
+
+                <button class="descargar"
+                        onclick="descargarDocumento()">
+                    ⬇ Descargar
+                </button>
+
+            </div>
+
+        </section>
+
+        <section class="grid">
+
+            <div class="preview">
+
+                <div class="box-title">
+                    📄 Vista Previa del Documento
+                </div>
+
+                <div class="documento">
+
+                    <div class="pagina">
+
+                        <div class="linea"></div>
+
+                        <h2>
+                            PLAN ESTRATÉGICO DE DESARROLLO
+                            INSTITUCIONAL
+                        </h2>
+
+                        <h3>
+                            Vigencia 2024 - 2030
+                        </h3>
+
+                        <h4>1. INTRODUCCIÓN</h4>
+
+                        <p>
+                            El presente documento define los ejes
+                            estratégicos que guiarán la universidad
+                            durante el próximo sexenio.
+                        </p>
+
+                        <h4>2. OBJETIVOS ESTRATÉGICOS</h4>
+
+                        <ul>
+                            <li>Acreditación institucional</li>
+                            <li>Innovación regional</li>
+                            <li>Bienestar estudiantil</li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="columna">
+
+                <div class="card">
+
+                    <h3>Metadatos del Documento</h3>
+
+                    <div class="meta">
+                        👤 Dr. Ricardo Gómez
+                    </div>
+
+                    <div class="meta">
+                        📅 15 Octubre 2023
+                    </div>
+
+                    <div class="meta">
+                        🔄 02 Febrero 2024
+                    </div>
+
+                    <div class="meta">
+                        🔒 Privado
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>Línea de Auditoría</h3>
+
+                    <div class="audit">
+                        Nueva versión (2.4.0)
+                    </div>
+
+                    <div class="audit">
+                        Aprobación Final
+                    </div>
+
+                    <div class="audit">
+                        Lectura / Consulta
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script>
+
+    function toggleSidebar(){
+        document
+            .querySelector(".sidebar")
+            .classList.toggle("collapsed");
+    }
+
+    function verHistorial(){
+        alert("Mostrando historial");
+    }
+
+    function nuevaVersion(){
+        alert("Crear nueva versión");
+    }
+
+    function descargarDocumento(){
+        alert("Descargando documento...");
+    }
+
+</script>
+
+</body>
+</html>

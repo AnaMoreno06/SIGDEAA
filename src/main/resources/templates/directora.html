@@ -65,18 +65,24 @@
 
     <!-- MENU -->
 
+    <!-- MENU -->
+
     <div class="menu">
 
-        <span class="menu-title">
-            PRINCIPAL
-        </span>
+    <span class="menu-title">
+        PRINCIPAL
+    </span>
 
-        <a href="#" class="active">
+        <!-- INICIO -->
+
+        <a th:href="@{/inicio}" class="active">
             <span>🏠</span>
             <span>Inicio</span>
         </a>
 
-        <a href="#">
+        <!-- DASHBOARD -->
+
+        <a th:href="@{/dashboard}">
             <span>📊</span>
             <span>Dashboard</span>
         </a>
@@ -84,25 +90,33 @@
         <!-- GESTIÓN -->
 
         <span class="menu-title">
-            GESTIÓN ACADÉMICA
-        </span>
+        GESTIÓN ACADÉMICA
+    </span>
+
+        <!-- PROCESOS -->
 
         <a th:href="@{/procesos}">
             <span>🕸️</span>
             <span>Gestión de procesos</span>
         </a>
 
-        <a href="#">
+        <!-- GESTIÓN DOCUMENTAL -->
+
+        <a th:href="@{/gestion-documental}">
             <span>📁</span>
             <span>Gestión documental</span>
         </a>
 
-        <a href="#">
+        <!-- AUDITORÍA -->
+
+        <a th:href="@{/auditoria}">
             <span>🛡️</span>
             <span>Auditoría</span>
         </a>
 
-        <a href="#">
+        <!-- EVIDENCIAS -->
+
+        <a th:href="@{/evidencias}">
             <span>📄</span>
             <span>Evidencias CNA</span>
         </a>
@@ -110,25 +124,33 @@
         <!-- ANALISIS -->
 
         <span class="menu-title">
-            ANÁLISIS Y COMUNICACIÓN
-        </span>
+        ANÁLISIS Y COMUNICACIÓN
+    </span>
 
-        <a href="#">
+        <!-- INDICADORES -->
+
+        <a th:href="@{/indicadores}">
             <span>📈</span>
             <span>Indicadores</span>
         </a>
 
-        <a href="#">
+        <!-- REPORTES -->
+
+        <a th:href="@{/reportes}">
             <span>📋</span>
             <span>Reportes</span>
         </a>
 
-        <a href="#">
+        <!-- PUBLICACIONES -->
+
+        <a th:href="@{/publicaciones}">
             <span>📢</span>
             <span>Publicaciones</span>
         </a>
 
-        <a href="#">
+        <!-- CALENDARIO -->
+
+        <a th:href="@{/calendario}">
             <span>📅</span>
             <span>Calendario</span>
         </a>
@@ -136,23 +158,39 @@
         <!-- ADMIN -->
 
         <span class="menu-title">
-            ADMINISTRACIÓN
-        </span>
+        ADMINISTRACIÓN
+    </span>
+
+        <!-- USUARIOS -->
 
         <a th:href="@{/usuarios}">
             <span>👥</span>
             <span>Gestión de usuarios</span>
         </a>
 
-        <a href="#">
+        <!-- CONFIGURACIÓN -->
+
+        <a th:href="@{/configuracion}">
             <span>⚙️</span>
             <span>Configuración</span>
         </a>
 
-        <a href="#">
+        <!-- PERFIL -->
+
+        <a th:href="@{/perfil}">
             <span>👤</span>
             <span>Perfil de usuario</span>
         </a>
+
+    </div>
+
+    <!-- ESTADO -->
+
+    <div class="system-status">
+
+        <h4>ESTADO DEL SISTEMA</h4>
+
+        <p>🟢 Sincronizado</p>
 
     </div>
 

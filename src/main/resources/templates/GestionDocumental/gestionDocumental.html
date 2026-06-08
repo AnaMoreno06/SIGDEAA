@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SIGDEA | Gestión Documental</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/gestionDocumental.css}">
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar" id="sidebar">
+
+    <!-- LOGO -->
+
+    <div class="logo-area">
+
+        <button class="menu-btn"
+                onclick="toggleSidebar()">
+
+            ☰
+
+        </button>
+
+        <div class="logo-text">
+
+            <h1>SIGDEA</h1>
+
+            <p>UFPS ADMINISTRATIVO</p>
+
+        </div>
+
+    </div>
+
+    <!-- PERFIL -->
+
+    <div class="profile-card">
+
+        <div class="avatar">
+            D
+        </div>
+
+        <div class="profile-info">
+
+            <h3>Directora SIGDEA</h3>
+
+            <p>PERFIL ADMINISTRATIVO</p>
+
+        </div>
+
+    </div>
+
+    <!-- MENU -->
+
+    <nav class="menu">
+
+        <span class="menu-title">PRINCIPAL</span>
+
+        <a th:href="@{/inicio}">
+            <span>🏠</span>
+            <span>Inicio</span>
+        </a>
+
+        <a th:href="@{/dashboard}">
+            <span>📊</span>
+            <span>Dashboard</span>
+        </a>
+
+        <span class="menu-title">
+            GESTIÓN ACADÉMICA
+        </span>
+
+        <a th:href="@{/procesos}">
+            <span>🕸️</span>
+            <span>Gestión de procesos</span>
+        </a>
+
+        <a th:href="@{/gestion-documental}" class="active">
+            <span>📁</span>
+            <span>Gestión documental</span>
+        </a>
+
+        <a th:href="@{/auditoria}">
+            <span>🛡️</span>
+            <span>Auditoría</span>
+        </a>
+
+        <a th:href="@{/evidencias}">
+            <span>📄</span>
+            <span>Evidencias CNA</span>
+        </a>
+
+        <span class="menu-title">
+            ANÁLISIS Y COMUNICACIÓN
+        </span>
+
+        <a th:href="@{/indicadores}">
+            <span>📈</span>
+            <span>Indicadores</span>
+        </a>
+
+        <a th:href="@{/reportes}">
+            <span>📋</span>
+            <span>Reportes</span>
+        </a>
+
+        <a th:href="@{/publicaciones}">
+            <span>📢</span>
+            <span>Publicaciones</span>
+        </a>
+
+        <a th:href="@{/calendario}">
+            <span>📅</span>
+            <span>Calendario</span>
+        </a>
+
+        <span class="menu-title">
+            ADMINISTRACIÓN
+        </span>
+
+        <a th:href="@{/usuarios}">
+            <span>👥</span>
+            <span>Gestión de usuarios</span>
+        </a>
+
+        <a th:href="@{/configuracion}">
+            <span>⚙️</span>
+            <span>Configuración</span>
+        </a>
+
+        <a th:href="@{/perfil}">
+            <span>👤</span>
+            <span>Perfil de usuario</span>
+        </a>
+
+    </nav>
+
+</aside>
+
+<!-- CONTENIDO PRINCIPAL -->
+
+<main class="main-content" id="mainContent">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+        <h2>Gestión Documental</h2>
+
+        <div class="top-icons">
+
+            <span class="notification">🔔</span>
+
+            <a th:href="@{/logout}">
+                ⏻
+            </a>
+
+        </div>
+
+    </header>
+
+    <!-- HERO -->
+
+    <section class="hero-box">
+
+        <div class="hero-info">
+
+            <span class="badge">
+                REPOSITORIO INSTITUCIONAL
+            </span>
+
+            <h1>
+                Gestión Documental
+            </h1>
+
+            <p>
+                Controle documentos,
+                evidencias y archivos institucionales.
+            </p>
+
+        </div>
+
+        <a th:href="@{/nuevo-documento}"
+           class="btn-red">
+
+            + NUEVO DOCUMENTO
+
+        </a>
+
+    </section>
+
+    <!-- CARDS -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <div class="icon">📁</div>
+
+            <h2>128</h2>
+
+            <p>Documentos</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="icon">🕸️</div>
+
+            <h2>32</h2>
+
+            <p>Procesos</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="icon">⏳</div>
+
+            <h2>15</h2>
+
+            <p>Pendientes</p>
+
+        </div>
+
+    </section>
+
+    <!-- TABLA -->
+
+    <section class="table-section">
+
+        <div class="search-box">
+
+            <input type="text"
+                   placeholder="Buscar documento...">
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table>
+
+                <thead>
+
+                <tr>
+
+                    <th>Documento</th>
+                    <th>Autor</th>
+                    <th>Categoría</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+
+                </tr>
+
+                </thead>
+
+                <tbody>
+
+                <tr>
+
+                    <td>Plan Estratégico 2025</td>
+                    <td>Dirección</td>
+                    <td>Institucional</td>
+
+                    <td>
+
+                        <span class="estado aprobado">
+                            Aprobado
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <a th:href="@{/detalle-documento}"
+                           class="btn-view">
+
+                            Ver
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Informe CNA</td>
+                    <td>Coordinación</td>
+                    <td>Acreditación</td>
+
+                    <td>
+
+                        <span class="estado pendiente">
+                            Pendiente
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <a th:href="@{/detalle-documento}"
+                           class="btn-view">
+
+                            Ver
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script>
+
+    function toggleSidebar(){
+
+        const sidebar =
+            document.getElementById("sidebar");
+
+        const main =
+            document.getElementById("mainContent");
+
+        sidebar.classList.toggle("collapsed");
+
+        main.classList.toggle("expanded");
+
+    }
+
+</script>
+
+</body>
+
+</html>
+
