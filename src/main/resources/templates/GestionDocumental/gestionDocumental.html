@@ -264,9 +264,9 @@
 
                 </thead>
 
-                <tbody>
+                <tbody id="tablaDocumentos">
 
-                <tr>
+                </tbody>
 
                     <td>Plan Estratégico 2025</td>
                     <td>Dirección</td>
@@ -343,6 +343,64 @@
         sidebar.classList.toggle("collapsed");
 
         main.classList.toggle("expanded");
+
+    }
+    window.onload = function(){
+
+        cargarDocumentos();
+
+    }
+
+    function cargarDocumentos(){
+
+        let documentos =
+            JSON.parse(
+                localStorage.getItem("documentos")
+            ) || [];
+
+        const tabla =
+            document.getElementById(
+                "tablaDocumentos"
+            );
+
+        tabla.innerHTML = "";
+
+        documentos.forEach(function(doc){
+
+            tabla.innerHTML += `
+
+        <tr>
+
+            <td>${doc.nombre}</td>
+
+            <td>${doc.responsable}</td>
+
+            <td>${doc.categoria}</td>
+
+            <td>
+
+                <span class="estado pendiente">
+                    ${doc.estado}
+                </span>
+
+            </td>
+
+            <td>
+
+                <a href="/detalle-documento"
+                   class="btn-view">
+
+                    Ver
+
+                </a>
+
+            </td>
+
+        </tr>
+
+        `;
+
+        });
 
     }
 

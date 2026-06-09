@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 
@@ -536,9 +536,56 @@
 
     function guardarDocumento(){
 
+        const nombre =
+            document.querySelector(
+                'input[placeholder="Ej. Acta de Consejo de Facultad 001"]'
+            ).value;
+
+        const responsable =
+            document.querySelector(
+                'input[placeholder="Nombre completo del funcionario"]'
+            ).value;
+
+        const tipo =
+            document.querySelectorAll("select")[0].value;
+
+        if(nombre === "" || responsable === ""){
+
+            alert(
+                "Complete los campos obligatorios"
+            );
+
+            return;
+
+        }
+
+        const nuevoDocumento = {
+
+            nombre:nombre,
+            responsable:responsable,
+            categoria:tipo,
+            estado:"Pendiente"
+
+        };
+
+        let documentos =
+            JSON.parse(
+                localStorage.getItem("documentos")
+            ) || [];
+
+        documentos.push(nuevoDocumento);
+
+        localStorage.setItem(
+            "documentos",
+            JSON.stringify(documentos)
+        );
+
         alert(
             "Documento guardado correctamente"
         );
+
+        window.location.href =
+            "/gestion-documental";
 
     }
 
@@ -546,4 +593,4 @@
 
 </body>
 </html>
-```
+
