@@ -31,10 +31,6 @@ public class VistaController {
         return "calendario";
     }
 
-    @GetMapping("/auditoria")
-    public String auditoria(){
-        return "auditoria";
-    }
 
     @GetMapping("/evidencias")
     public String evidencias(){
