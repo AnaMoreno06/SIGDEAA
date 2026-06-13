@@ -1,5 +1,5 @@
 
-        package com.sigdea.model;
+package com.sigdea.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

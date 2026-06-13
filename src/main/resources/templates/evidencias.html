@@ -1,10 +1,382 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Evidencias CNA</title>
+
+    <link rel="stylesheet" th:href="@{/css/cna.css}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h1>SIGDEA</h1>
+            <span>UFPS SISTEMA INSTITUCIONAL</span>
+        </div>
+
+        <div class="perfil">
+            <div class="avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div>
+                <h3>Directora SIGDEA</h3>
+                <p>UFPS ADMINISTRATIVO</p>
+            </div>
+        </div>
+
+        <div class="menu-titulo">
+            PRINCIPAL
+        </div>
+
+        <nav class="menu">
+
+            <a href="#">
+                <i class="fa-solid fa-house"></i>
+                Inicio
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-chart-column"></i>
+                Dashboard
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-gears"></i>
+                Gestión de procesos
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-folder"></i>
+                Gestión documental
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-chart-line"></i>
+                Indicadores
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-users"></i>
+                Gestión de usuarios
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-bullhorn"></i>
+                Publicaciones
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-shield"></i>
+                Auditoría
+            </a>
+
+            <a href="#" class="active">
+                <i class="fa-solid fa-file-lines"></i>
+                Evidencias CNA
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="topbar">
+
+            <div>
+                <h1>Estructura Jerárquica CNA</h1>
+                <p>
+                    Defina y organice la taxonomía institucional
+                    de factores, características y aspectos.
+                </p>
+            </div>
+
+            <div class="acciones-top">
+                <button class="btn-secundario">
+                    <i class="fa-solid fa-download"></i>
+                    Exportar
+                </button>
+
+                <button class="btn-principal">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Guardar Cambios
+                </button>
+            </div>
+
+        </header>
+
+        <!-- CARD -->
+        <section class="card-formulario">
+
+            <div class="titulo-card">
+                <div>
+                    <h2>
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        Configurador de Elementos
+                    </h2>
+
+                    <span>
+                        DETALLES TÉCNICOS Y JERARQUÍA
+                    </span>
+                </div>
+
+                <button class="modo">
+                    MODO EDICIÓN
+                </button>
+            </div>
+
+            <!-- FORM -->
+            <form>
+
+                <div class="grid-3">
+
+                    <div class="campo">
+                        <label>FACTOR</label>
+
+                        <select>
+                            <option value="">Seleccione</option>
+
+                            <option value="Factor 1">
+                                Factor 1: Proyecto Institucional
+                            </option>
+
+                            <option value="Factor 2">
+                                Factor 2: Estudiantes
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label>CARACTERÍSTICA</label>
+
+                        <select>
+                            <option value="">Seleccione</option>
+
+                            <option value="Característica 1.1">
+                                Característica 1.1:
+                                Misión y Proyecto Institucional
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label>NIVEL A EDITAR</label>
+
+                        <select>
+                            <option value="">Seleccione</option>
+
+                            <option value="Aspecto">
+                                Aspecto (Nuevo)
+                            </option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="grid-2">
+
+                    <div class="campo">
+                        <label>CÓDIGO DE IDENTIFICACIÓN</label>
+
+                        <input type="text"
+                               placeholder="Ej: F1-C1.1-A3">
+                    </div>
+
+                    <div class="campo">
+                        <label>NOMBRE DEL ELEMENTO</label>
+
+                        <input type="text"
+                               placeholder="Ingrese el nombre completo del aspecto...">
+                    </div>
+
+                </div>
+
+                <div class="campo">
+                    <label>DESCRIPCIÓN Y ALCANCE</label>
+
+                    <textarea
+                            placeholder="Definición técnica del propósito de este elemento..."></textarea>
+                </div>
+
+                <div class="grid-2">
+
+                    <div class="campo">
+                        <label>TIPO DE EVIDENCIA</label>
+
+                        <select>
+                            <option value="">Seleccione</option>
+
+                            <option value="Documental">
+                                Documental (PDF/DOCX)
+                            </option>
+
+                            <option value="Multimedia">
+                                Multimedia
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label>FRECUENCIA DE ACTUALIZACIÓN</label>
+
+                        <select>
+                            <option value="">Seleccione</option>
+
+                            <option value="Semestral">
+                                Semestral
+                            </option>
+
+                            <option value="Anual">
+                                Anual
+                            </option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- TAGS -->
+                <div class="tags">
+
+                    <span>FACTOR 1</span>
+
+                    <span>CARACT. 1.1</span>
+
+                    <span>NUEVO ASPECTO</span>
+
+                </div>
+
+                <!-- BOTONES -->
+                <div class="acciones-form">
+
+                    <button type="button" class="btn-cancelar">
+                        Descartar
+                    </button>
+
+                    <button type="submit" class="btn-principal">
+                        <i class="fa-solid fa-gear"></i>
+                        Finalizar y Publicar
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+        <!-- TABLA -->
+        <section class="tabla-card">
+
+            <div class="tabla-header">
+
+                <h3>
+                    <i class="fa-solid fa-table-list"></i>
+                    Elementos Configurados Recientemente
+                </h3>
+
+                <input type="text"
+                       placeholder="Buscar elemento...">
+
+            </div>
+
+            <table>
+
+                <thead>
+
+                <tr>
+                    <th>CÓDIGO</th>
+                    <th>NIVEL</th>
+                    <th>NOMBRE DEL ELEMENTO</th>
+                    <th>ACCIONES</th>
+                </tr>
+
+                </thead>
+
+                <tbody>
+
+                <tr>
+
+                    <td>F1-C1-A2</td>
+
+                    <td>
+                        <span class="badge">
+                            ASPECTO
+                        </span>
+                    </td>
+
+                    <td>
+                        Mecanismos de difusión del PEI
+                    </td>
+
+                    <td class="acciones">
+
+                        <button>
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                        <button>
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>F1-C1-A1</td>
+
+                    <td>
+                        <span class="badge">
+                            ASPECTO
+                        </span>
+                    </td>
+
+                    <td>
+                        Coherencia de Misión y Visión
+                    </td>
+
+                    <td class="acciones">
+
+                        <button>
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                        <button>
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
 
 </body>
 </html>

@@ -32,11 +32,6 @@ public class VistaController {
     }
 
 
-    @GetMapping("/evidencias")
-    public String evidencias(){
-        return "evidencias";
-    }
-
     @GetMapping("/configuracion")
     public String configuracion(){
         return "configuracion";
