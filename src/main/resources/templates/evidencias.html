@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Evidencias CNA</title>
 
-    <link rel="stylesheet" th:href="@{/css/cna.css}">
+    <link rel="stylesheet"
+          th:href="@{/css/cna.css}">
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 
 <body>
@@ -21,23 +27,27 @@
     <aside class="sidebar">
 
         <div class="logo">
+
             <h1>SIGDEA</h1>
-            <span>UFPS SISTEMA INSTITUCIONAL</span>
+
+            <p>UFPS SISTEMA INSTITUCIONAL</p>
+
         </div>
 
         <div class="perfil">
+
             <div class="avatar">
-                <i class="fa-solid fa-user"></i>
+                D
             </div>
 
             <div>
-                <h3>Directora SIGDEA</h3>
-                <p>UFPS ADMINISTRATIVO</p>
-            </div>
-        </div>
 
-        <div class="menu-titulo">
-            PRINCIPAL
+                <h3>Directora SIGDEA</h3>
+
+                <span>UFPS Administrativo</span>
+
+            </div>
+
         </div>
 
         <nav class="menu">
@@ -48,7 +58,7 @@
             </a>
 
             <a href="#">
-                <i class="fa-solid fa-chart-column"></i>
+                <i class="fa-solid fa-chart-line"></i>
                 Dashboard
             </a>
 
@@ -63,7 +73,7 @@
             </a>
 
             <a href="#">
-                <i class="fa-solid fa-chart-line"></i>
+                <i class="fa-solid fa-chart-column"></i>
                 Indicadores
             </a>
 
@@ -82,7 +92,7 @@
                 Auditoría
             </a>
 
-            <a href="#" class="active">
+            <a class="active" href="#">
                 <i class="fa-solid fa-file-lines"></i>
                 Evidencias CNA
             </a>
@@ -91,154 +101,221 @@
 
     </aside>
 
-    <!-- MAIN -->
-    <main class="main">
+    <!-- CONTENIDO -->
+    <main class="contenido">
 
-        <!-- HEADER -->
+        <!-- TOPBAR -->
         <header class="topbar">
 
-            <div>
-                <h1>Estructura Jerárquica CNA</h1>
-                <p>
-                    Defina y organice la taxonomía institucional
-                    de factores, características y aspectos.
-                </p>
-            </div>
+            <div class="search">
 
-            <div class="acciones-top">
-                <button class="btn-secundario">
-                    <i class="fa-solid fa-download"></i>
-                    Exportar
-                </button>
+                <i class="fa-solid fa-magnifying-glass"></i>
 
-                <button class="btn-principal">
-                    <i class="fa-solid fa-floppy-disk"></i>
-                    Guardar Cambios
-                </button>
+                <input type="text"
+                       placeholder="Buscar...">
+
             </div>
 
         </header>
 
-        <!-- CARD -->
-        <section class="card-formulario">
+        <!-- TITULO -->
+        <section class="titulo-box">
 
-            <div class="titulo-card">
+            <div>
+
+                <h1>
+                    Estructura Jerárquica CNA
+                </h1>
+
+                <p>
+                    Defina y organice la taxonomía institucional.
+                </p>
+
+            </div>
+
+            <div class="acciones-top">
+
+                <button class="btn-secundario">
+
+                    <i class="fa-solid fa-download"></i>
+
+                    Exportar
+
+                </button>
+
+                <button class="btn-principal"
+                        onclick="document.getElementById('formulario').submit()">
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    Guardar Cambios
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- CARD -->
+        <section class="card">
+
+            <div class="card-header">
+
                 <div>
+
                     <h2>
+
                         <i class="fa-solid fa-pen-to-square"></i>
+
                         Configurador de Elementos
+
                     </h2>
 
                     <span>
                         DETALLES TÉCNICOS Y JERARQUÍA
                     </span>
+
                 </div>
 
-                <button class="modo">
+                <div class="modo">
                     MODO EDICIÓN
-                </button>
+                </div>
+
             </div>
 
             <!-- FORM -->
-            <form>
+            <form id="formulario"
+                  th:action="@{/evidencias/guardar}"
+                  th:object="${evidencia}"
+                  method="post"
+                  enctype="multipart/form-data">
 
+                <!-- GRID 3 -->
                 <div class="grid-3">
 
                     <div class="campo">
+
                         <label>FACTOR</label>
 
-                        <select>
-                            <option value="">Seleccione</option>
+                        <select th:field="*{factor}">
 
                             <option value="Factor 1">
-                                Factor 1: Proyecto Institucional
+                                Factor 1
                             </option>
 
                             <option value="Factor 2">
-                                Factor 2: Estudiantes
+                                Factor 2
                             </option>
 
                         </select>
+
                     </div>
 
                     <div class="campo">
+
                         <label>CARACTERÍSTICA</label>
 
-                        <select>
-                            <option value="">Seleccione</option>
+                        <select th:field="*{caracteristica}">
 
-                            <option value="Característica 1.1">
-                                Característica 1.1:
-                                Misión y Proyecto Institucional
+                            <option value="Característica 1">
+                                Característica 1
+                            </option>
+
+                            <option value="Característica 2">
+                                Característica 2
                             </option>
 
                         </select>
+
                     </div>
 
                     <div class="campo">
-                        <label>NIVEL A EDITAR</label>
 
-                        <select>
-                            <option value="">Seleccione</option>
+                        <label>NIVEL</label>
+
+                        <select th:field="*{nivel}">
 
                             <option value="Aspecto">
-                                Aspecto (Nuevo)
+                                Aspecto
+                            </option>
+
+                            <option value="Indicador">
+                                Indicador
                             </option>
 
                         </select>
+
                     </div>
 
                 </div>
 
+                <!-- GRID 2 -->
                 <div class="grid-2">
 
                     <div class="campo">
-                        <label>CÓDIGO DE IDENTIFICACIÓN</label>
+
+                        <label>CÓDIGO</label>
 
                         <input type="text"
-                               placeholder="Ej: F1-C1.1-A3">
+                               th:field="*{codigo}"
+                               placeholder="Ej: F1-C1-A1">
+
                     </div>
 
                     <div class="campo">
-                        <label>NOMBRE DEL ELEMENTO</label>
+
+                        <label>NOMBRE</label>
 
                         <input type="text"
-                               placeholder="Ingrese el nombre completo del aspecto...">
+                               th:field="*{nombre}"
+                               placeholder="Nombre del elemento">
+
                     </div>
 
                 </div>
 
+                <!-- DESCRIPCIÓN -->
                 <div class="campo">
-                    <label>DESCRIPCIÓN Y ALCANCE</label>
 
-                    <textarea
-                            placeholder="Definición técnica del propósito de este elemento..."></textarea>
+                    <label>DESCRIPCIÓN</label>
+
+                    <textarea rows="6"
+                              th:field="*{descripcion}">
+                    </textarea>
+
                 </div>
 
+                <!-- GRID 2 -->
                 <div class="grid-2">
 
                     <div class="campo">
+
                         <label>TIPO DE EVIDENCIA</label>
 
-                        <select>
-                            <option value="">Seleccione</option>
+                        <select id="tipoEvidencia"
+                                th:field="*{tipoEvidencia}">
 
-                            <option value="Documental">
-                                Documental (PDF/DOCX)
+                            <option value="PDF">
+                                PDF / WORD
                             </option>
 
-                            <option value="Multimedia">
-                                Multimedia
+                            <option value="EXCEL">
+                                Excel
+                            </option>
+
+                            <option value="DRIVE">
+                                Google Drive
                             </option>
 
                         </select>
+
                     </div>
 
                     <div class="campo">
-                        <label>FRECUENCIA DE ACTUALIZACIÓN</label>
 
-                        <select>
-                            <option value="">Seleccione</option>
+                        <label>FRECUENCIA</label>
+
+                        <select th:field="*{frecuencia}">
 
                             <option value="Semestral">
                                 Semestral
@@ -249,31 +326,68 @@
                             </option>
 
                         </select>
+
                     </div>
 
                 </div>
 
-                <!-- TAGS -->
-                <div class="tags">
+                <!-- SUBIR ARCHIVOS -->
+                <div class="upload-container">
 
-                    <span>FACTOR 1</span>
+                    <input type="file"
+                           id="archivoInput"
+                           hidden>
 
-                    <span>CARACT. 1.1</span>
+                    <div class="upload-box"
+                         id="uploadBox">
 
-                    <span>NUEVO ASPECTO</span>
+                        <i id="uploadIcon"
+                           class="fa-solid fa-file-arrow-up"></i>
+
+                        <h3 id="uploadText">
+                            Arrastra o haz clic para subir PDF o Word
+                        </h3>
+
+                        <p>
+                            Tamaño máximo: 25MB
+                        </p>
+
+                    </div>
+
+                    <!-- DRIVE -->
+                    <div id="driveContainer"
+                         style="display:none; margin-top:20px;">
+
+                        <input type="url"
+                               placeholder="Pegue aquí el enlace de Google Drive"
+                               style="
+                               width:100%;
+                               padding:16px;
+                               border-radius:12px;
+                               border:1px solid #ddd;
+                               ">
+
+                    </div>
 
                 </div>
 
                 <!-- BOTONES -->
-                <div class="acciones-form">
+                <div class="botones-finales">
 
-                    <button type="button" class="btn-cancelar">
+                    <button type="reset"
+                            class="btn-cancelar">
+
                         Descartar
+
                     </button>
 
-                    <button type="submit" class="btn-principal">
+                    <button type="submit"
+                            class="btn-principal">
+
                         <i class="fa-solid fa-gear"></i>
+
                         Finalizar y Publicar
+
                     </button>
 
                 </div>
@@ -283,14 +397,17 @@
         </section>
 
         <!-- TABLA -->
-        <section class="tabla-card">
+        <section class="card">
 
             <div class="tabla-header">
 
-                <h3>
-                    <i class="fa-solid fa-table-list"></i>
-                    Elementos Configurados Recientemente
-                </h3>
+                <h2>
+
+                    <i class="fa-solid fa-table"></i>
+
+                    Elementos Configurados
+
+                </h2>
 
                 <input type="text"
                        placeholder="Buscar elemento...">
@@ -302,67 +419,47 @@
                 <thead>
 
                 <tr>
+
                     <th>CÓDIGO</th>
+
                     <th>NIVEL</th>
-                    <th>NOMBRE DEL ELEMENTO</th>
+
+                    <th>NOMBRE</th>
+
                     <th>ACCIONES</th>
+
                 </tr>
 
                 </thead>
 
                 <tbody>
 
-                <tr>
+                <tr th:each="item : ${lista}">
 
-                    <td>F1-C1-A2</td>
+                    <td th:text="${item.codigo}"></td>
 
-                    <td>
-                        <span class="badge">
-                            ASPECTO
-                        </span>
-                    </td>
+                    <td th:text="${item.nivel}"></td>
 
-                    <td>
-                        Mecanismos de difusión del PEI
-                    </td>
+                    <td th:text="${item.nombre}"></td>
 
                     <td class="acciones">
 
-                        <button>
+                        <!-- EDITAR -->
+                        <a th:href="@{/evidencias/editar/{id}(id=${item.id})}"
+                           class="btn-icon editar">
+
                             <i class="fa-solid fa-pen"></i>
-                        </button>
 
-                        <button>
+                        </a>
+
+                        <!-- ELIMINAR -->
+                        <a th:href="@{/evidencias/eliminar/{id}(id=${item.id})}"
+                           class="btn-icon eliminar"
+                           onclick="return confirm('¿Eliminar evidencia?')">
+
                             <i class="fa-solid fa-trash"></i>
-                        </button>
 
-                    </td>
-
-                </tr>
-
-                <tr>
-
-                    <td>F1-C1-A1</td>
-
-                    <td>
-                        <span class="badge">
-                            ASPECTO
-                        </span>
-                    </td>
-
-                    <td>
-                        Coherencia de Misión y Visión
-                    </td>
-
-                    <td class="acciones">
-
-                        <button>
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-
-                        <button>
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
+                        </a>
 
                     </td>
 
@@ -377,6 +474,82 @@
     </main>
 
 </div>
+
+<!-- JS -->
+<script>
+
+    const tipoEvidencia =
+        document.getElementById("tipoEvidencia");
+
+    const uploadText =
+        document.getElementById("uploadText");
+
+    const uploadIcon =
+        document.getElementById("uploadIcon");
+
+    const uploadBox =
+        document.getElementById("uploadBox");
+
+    const driveContainer =
+        document.getElementById("driveContainer");
+
+    const archivoInput =
+        document.getElementById("archivoInput");
+
+    tipoEvidencia.addEventListener("change", function () {
+
+        if(this.value === "EXCEL"){
+
+            uploadText.innerHTML =
+                "Arrastra o haz clic para subir Excel";
+
+            uploadIcon.className =
+                "fa-solid fa-file-excel";
+
+            uploadBox.style.display = "flex";
+
+            driveContainer.style.display = "none";
+        }
+
+        else if(this.value === "DRIVE"){
+
+            driveContainer.style.display = "block";
+
+            uploadBox.style.display = "none";
+        }
+
+        else{
+
+            uploadText.innerHTML =
+                "Arrastra o haz clic para subir PDF o Word";
+
+            uploadIcon.className =
+                "fa-solid fa-file-arrow-up";
+
+            uploadBox.style.display = "flex";
+
+            driveContainer.style.display = "none";
+        }
+
+    });
+
+    uploadBox.addEventListener("click", function () {
+
+        archivoInput.click();
+
+    });
+
+    archivoInput.addEventListener("change", function () {
+
+        if(this.files.length > 0){
+
+            uploadText.innerHTML =
+                this.files[0].name;
+        }
+
+    });
+
+</script>
 
 </body>
 </html>

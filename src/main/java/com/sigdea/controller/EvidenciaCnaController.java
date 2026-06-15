@@ -16,32 +16,73 @@ public class EvidenciaCnaController {
         this.repository = repository;
     }
 
+    // LISTAR
     @GetMapping
-    public String mostrarVista(Model model) {
+    public String listar(Model model){
 
-        model.addAttribute("evidencia",
-                new EvidenciaCna());
+        model.addAttribute(
+                "evidencia",
+                new EvidenciaCna()
+        );
 
-        model.addAttribute("lista",
-                repository.findAll());
+        model.addAttribute(
+                "lista",
+                repository.findAll()
+        );
 
         return "evidencias";
     }
 
+    // GUARDAR
     @PostMapping("/guardar")
     public String guardar(
-            @ModelAttribute EvidenciaCna evidencia) {
+            @ModelAttribute EvidenciaCna evidencia
+    ){
 
         repository.save(evidencia);
 
         return "redirect:/evidencias";
     }
 
+    // EDITAR
+    @GetMapping("/editar/{id}")
+    public String editar(
+            @PathVariable Long id,
+            Model model
+    ){
+
+        EvidenciaCna evidencia =
+                repository.findById(id).orElse(null);
+
+        model.addAttribute(
+                "evidencia",
+                evidencia
+        );
+
+        return "editarEvidenciascna";
+    }
+
+    // ACTUALIZAR
+    @PostMapping("/actualizar")
+    public String actualizar(
+            @ModelAttribute EvidenciaCna evidencia
+    ){
+
+        repository.save(evidencia);
+
+        return "redirect:/evidencias";
+    }
+
+    // ELIMINAR
     @GetMapping("/eliminar/{id}")
-    public String eliminar(@PathVariable Long id) {
+    public String eliminar(
+            @PathVariable Long id
+    ){
 
         repository.deleteById(id);
 
         return "redirect:/evidencias";
     }
+
 }
+

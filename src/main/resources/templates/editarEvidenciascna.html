@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Editar Evidencia CNA</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/cna.css}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h1>SIGDEA</h1>
+
+            <p>UFPS SISTEMA INSTITUCIONAL</p>
+
+        </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <section class="title-section">
+
+            <div>
+
+                <h1>
+                    Editar Evidencia CNA
+                </h1>
+
+                <p>
+                    Modifique la información registrada.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- CARD -->
+        <section class="form-card">
+
+            <form th:action="@{/evidencias/actualizar}"
+                  th:object="${evidencia}"
+                  method="post">
+
+                <!-- ID -->
+                <input type="hidden"
+                       th:field="*{id}">
+
+                <!-- GRID -->
+                <div class="grid-2">
+
+                    <div class="form-group">
+
+                        <label>CÓDIGO</label>
+
+                        <input type="text"
+                               th:field="*{codigo}">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>NOMBRE</label>
+
+                        <input type="text"
+                               th:field="*{nombre}">
+
+                    </div>
+
+                </div>
+
+                <!-- DESCRIPCION -->
+                <div class="form-group">
+
+                    <label>DESCRIPCIÓN</label>
+
+                    <textarea rows="5"
+                              th:field="*{descripcion}"></textarea>
+
+                </div>
+
+                <!-- GRID -->
+                <div class="grid-2">
+
+                    <div class="form-group">
+
+                        <label>TIPO EVIDENCIA</label>
+
+                        <select th:field="*{tipoEvidencia}">
+
+                            <option value="Documento">
+                                Documento
+                            </option>
+
+                            <option value="Excel">
+                                Excel
+                            </option>
+
+                            <option value="Drive">
+                                Google Drive
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>FRECUENCIA</label>
+
+                        <select th:field="*{frecuencia}">
+
+                            <option value="Semestral">
+                                Semestral
+                            </option>
+
+                            <option value="Anual">
+                                Anual
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <!-- BOTONES -->
+                <div class="buttons">
+
+                    <a href="/evidencias"
+                       class="btn-cancel">
+
+                        Volver
+
+                    </a>
+
+                    <button type="submit"
+                            class="btn-submit">
+
+                        <i class="fa-solid fa-pen"></i>
+
+                        Actualizar Evidencia
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>
+

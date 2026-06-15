@@ -20,18 +20,25 @@ public class EvidenciaCna {
 
     private String nombre;
 
-    @Column(length = 2000)
+    @Column(length = 3000)
     private String descripcion;
 
     private String tipoEvidencia;
 
     private String frecuencia;
 
+    // CONSTRUCTOR
     public EvidenciaCna() {
     }
 
+    // GETTERS Y SETTERS
+
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFactor() {
@@ -97,4 +104,6 @@ public class EvidenciaCna {
     public void setFrecuencia(String frecuencia) {
         this.frecuencia = frecuencia;
     }
+
 }
+
